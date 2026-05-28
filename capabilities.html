@@ -1,0 +1,212 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Capabilities — A28 Global</title>
+<meta name="description" content="A28 Global capabilities — architecture, data & AI, automation, and advisory for governments and enterprises." />
+<script>
+(function(){var a={enterprise:1,government:1};var r=null;try{r=new URLSearchParams(location.search).get('route');}catch(e){}if(!a[r]){try{r=sessionStorage.getItem('a28-route');}catch(e){}}if(!a[r])r='enterprise';try{sessionStorage.setItem('a28-route',r);}catch(e){}document.documentElement.dataset.theme=r;})();
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Oranienbaum&family=Inter:wght@200;300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,300,0,0" rel="stylesheet" />
+<link rel="stylesheet" href="assets/tokens.css" />
+<link rel="stylesheet" href="assets/site.css" />
+<link rel="stylesheet" href="assets/enterprise.css" />
+<script src="assets/theme.js"></script>
+</head>
+<body>
+
+<!-- ===== NAV ===== -->
+<header class="nav is-dark">
+  <div class="nav__inner">
+    <a href="home.html" class="nav__logo"><img src="assets/A28_logo.svg" alt="A28 Global" /></a>
+    <nav class="nav__links">
+      <a class="nav__link" data-page="about.html" href="about.html">About</a>
+      <a class="nav__link" data-page="capabilities.html" href="capabilities.html">Capabilities</a>
+      <a class="nav__link" data-page="work.html" href="work.html">Case Studies</a>
+      <a href="contact.html" class="a28-btn a28-btn--secondary on-dark">Let's Talk! <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M2 8h12M9 3l5 5-5 5" stroke="currentColor" stroke-width="1.25" stroke-linecap="square"/></svg></a>
+    </nav>
+    <button class="nav__burger" id="nav-burger" aria-label="Open menu"><svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M3 7h18M3 12h18M3 17h18" stroke="currentColor" stroke-width="1.5" stroke-linecap="square"/></svg></button>
+  </div>
+</header>
+
+<div class="mobile-menu" id="mobile-menu" aria-hidden="true">
+  <div class="mobile-menu__top">
+    <a href="home.html" class="nav__logo"><img src="assets/A28_logo.svg" alt="A28 Global" /></a>
+    <button class="mobile-menu__close" id="mobile-menu-close" aria-label="Close menu"><svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M5 5l14 14M19 5L5 19" stroke="currentColor" stroke-width="1.5" stroke-linecap="square"/></svg></button>
+  </div>
+  <nav class="mobile-menu__nav">
+    <a data-page="about.html" href="about.html">About</a>
+    <a data-page="capabilities.html" href="capabilities.html">Capabilities</a>
+    <a data-page="work.html" href="work.html">Case Studies</a>
+  </nav>
+  <div class="mobile-menu__cta">
+    <a href="contact.html" class="a28-btn a28-btn--primary on-dark a28-btn--lg">Let's Talk!
+      <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M2 8h12M9 3l5 5-5 5" stroke="currentColor" stroke-width="1.25" stroke-linecap="square"/></svg>
+    </a>
+  </div>
+</div>
+
+
+
+<!-- ============================================================
+     ENTERPRISE ROUTE — fresh capabilities deck
+     ============================================================ -->
+<div data-theme-only="enterprise" class="ent-page">
+
+  <!-- ===== Hero ===== -->
+  <section class="ent-cap-hero">
+    <div class="ent-container ent-reveal">
+      <span class="ent-cap-hero__sticker">Capabilities</span>
+      <h1 class="ent-display ent-display--xl ent-cap-hero__title">Open the Pack.</h1>
+      <p class="ent-cap-hero__sub">A28 Global delivers integrated capabilities across systems, data, and execution — designed for complex, multi-stakeholder environments. Here are the four we play.</p>
+    </div>
+  </section>
+
+  <!-- ===== Trading-card deck ===== -->
+  <section style="padding-bottom: clamp(48px, 6vw, 80px);">
+    <div class="ent-container">
+      <div class="ent-cap-deck ent-reveal">
+
+        <article class="ent-cap-card">
+          <div class="ent-cap-card__head">
+            <span>01 / Architecture</span>
+            <span class="ent-cap-card__rarity">Build</span>
+          </div>
+          <div class="ent-cap-card__art"><img src="assets/case-national-platform.webp" alt="" loading="lazy" decoding="async" /></div>
+          <h3 class="ent-cap-card__name">Architecture &amp; Digital Platforms</h3>
+          <p class="ent-cap-card__body">We design and develop scalable, secure, and future-ready systems.</p>
+          <ul class="ent-cap-card__bullets">
+            <li>Enterprise system architecture</li>
+            <li>Digital platforms, portals, registries</li>
+            <li>API &amp; system integration</li>
+            <li>Cloud architecture &amp; migration</li>
+          </ul>
+          <img class="ent-cap-card__mascot ent-cap-card__mascot--duo ent-cap-card__mascot--cat" src="assets/beachcatface.webp" alt="" aria-hidden="true" loading="lazy" decoding="async" />
+          <img class="ent-cap-card__mascot ent-cap-card__mascot--duo ent-cap-card__mascot--capy" src="assets/beachcapyface.webp" alt="" aria-hidden="true" loading="lazy" decoding="async" />
+        </article>
+
+        <article class="ent-cap-card">
+          <div class="ent-cap-card__head">
+            <span>02 / Data &amp; AI</span>
+            <span class="ent-cap-card__rarity">Think</span>
+          </div>
+          <div class="ent-cap-card__art"><img src="assets/case-workforce-analytics.webp" alt="" loading="lazy" decoding="async" /></div>
+          <h3 class="ent-cap-card__name">Data, Analytics &amp; AI</h3>
+          <p class="ent-cap-card__body">We turn fragmented data into actionable intelligence.</p>
+          <ul class="ent-cap-card__bullets">
+            <li>Data architecture &amp; data models</li>
+            <li>Analytical dashboards &amp; reporting</li>
+            <li>Predictive &amp; ML models</li>
+            <li>NLP and text analytics</li>
+          </ul>
+          <img class="ent-cap-card__mascot ent-cap-card__mascot--capy" src="assets/beachcapyface.webp" alt="" aria-hidden="true" loading="lazy" decoding="async" />
+        </article>
+
+        <article class="ent-cap-card">
+          <div class="ent-cap-card__head">
+            <span>03 / Automation</span>
+            <span class="ent-cap-card__rarity">Auto</span>
+          </div>
+          <div class="ent-cap-card__art"><img src="assets/case-enterprise-automation.webp" alt="" loading="lazy" decoding="async" /></div>
+          <h3 class="ent-cap-card__name">Automation &amp; AI Ops</h3>
+          <p class="ent-cap-card__body">We design automation that improves efficiency and reduces manual effort.</p>
+          <ul class="ent-cap-card__bullets">
+            <li>Workflow automation &amp; orchestration</li>
+            <li>AI-assisted document processing</li>
+            <li>Intelligent assistants &amp; chatbots</li>
+            <li>Integration into existing systems</li>
+          </ul>
+          <img class="ent-cap-card__mascot ent-cap-card__mascot--capy" src="assets/beachcapyface.webp" alt="" aria-hidden="true" loading="lazy" decoding="async" />
+        </article>
+
+        <article class="ent-cap-card">
+          <div class="ent-cap-card__head">
+            <span>04 / Advisory</span>
+            <span class="ent-cap-card__rarity">Guide</span>
+          </div>
+          <div class="ent-cap-card__art"><img src="assets/engaged-01.webp" alt="" loading="lazy" decoding="async" /></div>
+          <h3 class="ent-cap-card__name">Advisory &amp; Transformation</h3>
+          <p class="ent-cap-card__body">We support organisations in structuring and delivering digital initiatives.</p>
+          <ul class="ent-cap-card__bullets">
+            <li>Digital strategy &amp; roadmap</li>
+            <li>Governance for systems &amp; data</li>
+            <li>Requirements definition &amp; validation</li>
+            <li>RFP / tender support · operating model</li>
+          </ul>
+          <img class="ent-cap-card__mascot ent-cap-card__mascot--cat" src="assets/beachcatface.webp" alt="" aria-hidden="true" loading="lazy" decoding="async" />
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== Big CTA ===== -->
+  <section class="ent-bigcta">
+    <div class="ent-container ent-reveal">
+      <div class="ent-bigcta__panel">
+        <h2 class="ent-bigcta__title">Let's Pick the Right<br/>Card for Your Problem.</h2>
+        <p class="ent-bigcta__sub">Most engagements blend two or three of these. Tell us what you're up against — we'll sketch the path.</p>
+        <div class="ent-bigcta__actions">
+          <a href="contact.html" class="ent-btn ent-btn--primary" style="background:#fff; color:var(--ent-ink); border-color:var(--ent-ink);">Start a conversation</a>
+          <a href="work.html" class="ent-btn" style="background:transparent; color:#fff; border-color:#fff; box-shadow:4px 4px 0 rgba(0,0,0,0.4);">See it in action</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</div><!-- /[data-theme-only="enterprise"] -->
+
+<button class="to-top" id="to-top" type="button" aria-label="Back to top">
+  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 19V5M5 12l7-7 7 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+</button>
+
+<!-- ===== FOOTER ===== -->
+<footer class="footer">
+  <div class="footer__inner">
+    <div class="footer__cols">
+      <div>
+        <a href="home.html" class="nav__logo"><img src="assets/A28_logo.svg" alt="A28 Global" /></a>
+        <p style="margin-top: 24px; max-width: 380px; color: var(--a28-paper-70); font-weight: 300; line-height: 1.65;">Designing and delivering digital systems, data, and AI for governments and enterprises operating in complex environments.</p>
+        <div style="margin-top: 32px; display: flex; gap: 12px; align-items: center;">
+          <span class="a28-eyebrow on-dark">A28 Global Sdn. Bhd.</span>
+        </div>
+      </div>
+      <div>
+        <div class="a28-eyebrow on-dark" style="margin-bottom: 20px;">Practice</div>
+        <ul class="footer__list">
+          <li><a href="about.html">About</a></li>
+          <li><a href="capabilities.html">Capabilities</a></li>
+          <li><a href="work.html">Case Studies</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="a28-eyebrow on-dark" style="margin-bottom: 20px;">Contact</div>
+        <ul class="footer__list">
+          <li><a href="mailto:hello@a28global.com">hello@a28global.com</a></li>
+          <li><a href="tel:+60123915188">+60 12-391 5188</a></li>
+          <li><a href="contact.html">Schedule a call</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="a28-eyebrow on-dark" style="margin-bottom: 20px;">Legal</div>
+        <ul class="footer__list">
+          <li><a href="#">Privacy</a></li>
+          <li><a href="#">Terms</a></li>
+          <li><a href="#">Cookies</a></li>
+        </ul>
+      </div>
+    </div>
+    <hr class="a28-rule on-dark" style="margin: 64px 0 24px;" />
+    <div class="footer__legal">
+      <span>© 2026 A28 GLOBAL — ALL RIGHTS RESERVED</span>
+    </div>
+  </div>
+</footer>
+
+<script src="assets/site.js"></script>
+</body>
+</html>

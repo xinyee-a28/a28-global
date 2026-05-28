@@ -1,0 +1,11 @@
+# Local cleanup folder — originals + unused assets, not deployed
+_unused_gov_assets/
+
+# OS / editor cruft
+.DS_Store
+Thumbs.db
+desktop.ini
+*.swp
+*~
+.idea/
+.vscode/

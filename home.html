@@ -1,0 +1,506 @@
+﻿<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>A28 Global — Designing and delivering digital systems</title>
+<meta name="description" content="A28 Global Sdn. Bhd. — partners with governments and enterprises to design and deliver digital systems, data, and AI in complex, real-world environments." />
+<script>
+(function(){var a={enterprise:1,government:1};var r=null;try{r=new URLSearchParams(location.search).get('route');}catch(e){}if(!a[r]){try{r=sessionStorage.getItem('a28-route');}catch(e){}}if(!a[r])r='enterprise';try{sessionStorage.setItem('a28-route',r);}catch(e){}document.documentElement.dataset.theme=r;})();
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Oranienbaum&family=Inter:wght@200;300;400;500;600&family=JetBrains+Mono:wght@400;500&family=Manrope:wght@800&display=swap" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,300,0,0" rel="stylesheet" />
+<link rel="stylesheet" href="assets/tokens.css" />
+<link rel="stylesheet" href="assets/site.css" />
+<link rel="stylesheet" href="assets/enterprise.css" />
+<script src="assets/theme.js"></script>
+</head>
+<body>
+
+<!-- ===== NAV (dark on hero) ===== -->
+<header class="nav is-dark">
+  <div class="nav__inner">
+    <a href="home.html" class="nav__logo">
+      <img src="assets/A28_logo.svg" alt="A28 Global" />
+    </a>
+    <nav class="nav__links">
+      <a class="nav__link" data-page="about.html" href="about.html">About</a>
+      <a class="nav__link" data-page="capabilities.html" href="capabilities.html">Capabilities</a>
+      <a class="nav__link" data-page="work.html" href="work.html">Case Studies</a>
+      <a href="contact.html" class="a28-btn a28-btn--secondary on-dark">Let's Talk! <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M2 8h12M9 3l5 5-5 5" stroke="currentColor" stroke-width="1.25" stroke-linecap="square"/></svg></a>
+    </nav>
+    <button class="nav__burger" id="nav-burger" aria-label="Open menu">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M3 7h18M3 12h18M3 17h18" stroke="currentColor" stroke-width="1.5" stroke-linecap="square"/></svg>
+    </button>
+  </div>
+</header>
+
+<div class="mobile-menu" id="mobile-menu" aria-hidden="true">
+  <div class="mobile-menu__top">
+    <a href="home.html" class="nav__logo">
+      <img src="assets/A28_logo.svg" alt="A28 Global" />
+    </a>
+    <button class="mobile-menu__close" id="mobile-menu-close" aria-label="Close menu">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M5 5l14 14M19 5L5 19" stroke="currentColor" stroke-width="1.5" stroke-linecap="square"/></svg>
+    </button>
+  </div>
+  <nav class="mobile-menu__nav">
+    <a data-page="about.html" href="about.html">About</a>
+    <a data-page="capabilities.html" href="capabilities.html">Capabilities</a>
+    <a data-page="work.html" href="work.html">Case Studies</a>
+  </nav>
+  <div class="mobile-menu__cta">
+    <a href="contact.html" class="a28-btn a28-btn--primary on-dark a28-btn--lg">Let's Talk!
+      <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M2 8h12M9 3l5 5-5 5" stroke="currentColor" stroke-width="1.25" stroke-linecap="square"/></svg>
+    </a>
+  </div>
+</div>
+
+
+
+<!-- ============================================================
+     ENTERPRISE ROUTE — fresh "workshop" redesign
+     ============================================================ -->
+<div data-theme-only="enterprise" class="ent-page">
+
+  <!-- ===== Hero: scroll-jacked marquee + stop-motion capybara =====
+       Desktop pins this section; vertical scroll pans the line left and
+       spins the capy (see .ent-hero CSS + site.js). Mobile / reduced-motion
+       fall back to a static, naturally-wrapped hero. -->
+  <section class="ent-hero" id="ent-hero" aria-label="We build digital systems that actually work">
+    <div class="ent-hero__badge">
+      <span class="ent-hero__badge-dot" aria-hidden="true"></span>
+      <span>A28 Global</span>
+      <span class="ent-hero__badge-sep" aria-hidden="true">·</span>
+      <span>Government &amp; Enterprise</span>
+    </div>
+    <p class="ent-hero__lead">For governments and enterprises in complex environments — we design, build, and run the systems that ship. From strategy to AI to operations, all by the same hands.</p>
+    <div class="ent-hero__viewport">
+      <h1 class="ent-hero__line" id="ent-hero-line">
+        <span class="ent-hero__word">We</span>
+        <span class="ent-hero__word ent-hero__word--alt">build</span>
+        <span class="ent-hero__word">digital</span>
+        <span class="ent-hero__word ent-hero__word--alt">systems</span>
+        <span class="ent-hero__word">that</span>
+        <span class="ent-hero__word ent-hero__word--accent">actually</span>
+        <span class="ent-hero__word ent-hero__word--accent">work.</span>
+      </h1>
+    </div>
+    <div class="ent-hero__capy" id="ent-hero-capy">
+      <img class="ent-hero__capy-img" id="ent-hero-capy-img"
+           src="assets/beachcapyspin/0003.webp"
+           alt="Techybara mascot spinning" decoding="async" />
+    </div>
+    <div class="ent-hero__actions">
+      <a href="#build" class="ent-btn ent-btn--primary">See what we build
+        <span class="material-symbols-outlined" aria-hidden="true" style="font-size:18px;">arrow_downward</span>
+      </a>
+      <a href="contact.html" class="ent-btn">Let's talk</a>
+    </div>
+  </section>
+
+  <!-- ===== Ticker ===== -->
+  <div class="ent-ticker" aria-hidden="true">
+    <div class="ent-ticker__track">
+      <span class="ent-ticker__item">Architecture</span>
+      <span class="ent-ticker__item">Digital Platforms</span>
+      <span class="ent-ticker__item">Data &amp; Analytics</span>
+      <span class="ent-ticker__item">Artificial Intelligence</span>
+      <span class="ent-ticker__item">Automation</span>
+      <span class="ent-ticker__item">Advisory</span>
+      <span class="ent-ticker__item">Digital Transformation</span>
+      <span class="ent-ticker__item">Architecture</span>
+      <span class="ent-ticker__item">Digital Platforms</span>
+      <span class="ent-ticker__item">Data &amp; Analytics</span>
+      <span class="ent-ticker__item">Artificial Intelligence</span>
+      <span class="ent-ticker__item">Automation</span>
+      <span class="ent-ticker__item">Advisory</span>
+      <span class="ent-ticker__item">Digital Transformation</span>
+    </div>
+  </div>
+
+  <!-- ===== Mascot dialogue ===== -->
+  <section class="ent-dialogue">
+    <div class="ent-container ent-reveal">
+      <div class="ent-dialogue__panel">
+        <div class="ent-dialogue__avatars">
+          <div class="ent-dialogue__avatar">
+            <img src="assets/beachcapyface.webp" alt="Techybara" loading="lazy" decoding="async" />
+          </div>
+          <div class="ent-dialogue__avatar">
+            <img src="assets/beachcatface.webp" alt="Oyen" loading="lazy" decoding="async" />
+          </div>
+        </div>
+        <div class="ent-dialogue__bubble">
+          <strong>Hi!</strong> We're Techybara &amp; Oyen — your guides through whatever's in your backlog. A28 Global helps organisations turn high-level intent into real, deployable systems. Strategy, architecture, data, AI, automation. Same crew, end to end. No throw-overs, no consultancy theatre.
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== Why A28 Global Matters: tinted concern cards ===== -->
+  <section class="ent-section ent-section--mist" id="matters">
+    <div class="ent-container">
+      <div class="ent-section-head ent-reveal">
+        <div>
+          <span class="ent-eyebrow">02 / Why It Matters</span>
+          <h2 class="ent-display ent-display--lg ent-section-head__title">Why A28 Global Matters.</h2>
+        </div>
+        <p class="ent-section-head__side">We are typically engaged when organisations face complexity across systems, data, and stakeholders — that's the moment we do our best work.</p>
+      </div>
+      <div class="ent-reasons">
+        <article class="ent-reason ent-reveal">
+          <div class="ent-reason__visual">
+            <img src="assets/reason-fragmented.webp" alt="" loading="lazy" decoding="async" />
+          </div>
+          <div class="ent-reason__copy">
+            <h3 class="ent-reason__title">Fragmented Systems</h3>
+            <p class="ent-reason__body">Across agencies, departments, and platforms.</p>
+          </div>
+        </article>
+        <article class="ent-reason ent-reveal">
+          <div class="ent-reason__visual">
+            <img src="assets/reason-underused.webp" alt="" loading="lazy" decoding="async" />
+          </div>
+          <div class="ent-reason__copy">
+            <h3 class="ent-reason__title">Underused Data</h3>
+            <p class="ent-reason__body">Information without insight.</p>
+          </div>
+        </article>
+        <article class="ent-reason ent-reveal">
+          <div class="ent-reason__visual">
+            <img src="assets/reason-stalled.webp" alt="" loading="lazy" decoding="async" />
+          </div>
+          <div class="ent-reason__copy">
+            <h3 class="ent-reason__title">Stalled Initiatives</h3>
+            <p class="ent-reason__body">Strategy disconnected from execution.</p>
+          </div>
+        </article>
+        <article class="ent-reason ent-reveal">
+          <div class="ent-reason__visual">
+            <img src="assets/reason-scaling.webp" alt="" loading="lazy" decoding="async" />
+          </div>
+          <div class="ent-reason__copy">
+            <h3 class="ent-reason__title">Scaling Complexity</h3>
+            <p class="ent-reason__body">Many stakeholders, environments, systems.</p>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== What We Build: trading cards ===== -->
+  <section class="ent-section ent-section--cream" id="build">
+    <div class="ent-container">
+      <div class="ent-section-head ent-reveal">
+        <div>
+          <span class="ent-eyebrow">03 / The Practice</span>
+          <h2 class="ent-display ent-display--lg ent-section-head__title">What We Build.</h2>
+        </div>
+        <p class="ent-section-head__side">A connected practice covering strategy, systems, data, and transformation — designed to operate at scale, in complex real-world environments.</p>
+      </div>
+      <div class="ent-deck">
+        <article class="ent-card ent-reveal" tabindex="0">
+          <div class="ent-card__no">01 / 04</div>
+          <div class="ent-card__icon"><span class="material-symbols-outlined" aria-hidden="true">lan</span></div>
+          <h3 class="ent-card__title">Architecture &amp; Digital Platforms</h3>
+          <p class="ent-card__body">System architecture, portals, integrations, and cloud platforms designed to operate at scale.</p>
+          <span class="ent-sticker ent-card__corner">Build</span>
+          <div class="ent-card__overlay" aria-hidden="true">
+            <img src="assets/cap-architecture.webp" alt="" loading="lazy" decoding="async" />
+            <span class="ent-card__overlay-label">Architecture &amp; Digital Platforms</span>
+          </div>
+        </article>
+        <article class="ent-card ent-reveal" tabindex="0">
+          <div class="ent-card__no">02 / 04</div>
+          <div class="ent-card__icon"><span class="material-symbols-outlined" aria-hidden="true">monitoring</span></div>
+          <h3 class="ent-card__title">Analytics, Data &amp; AI</h3>
+          <p class="ent-card__body">Data architecture, dashboards, predictive models, and decision-support intelligence layers.</p>
+          <span class="ent-sticker ent-sticker--sky ent-card__corner">Think</span>
+          <div class="ent-card__overlay" aria-hidden="true">
+            <img src="assets/cap-data.webp" alt="" loading="lazy" decoding="async" />
+            <span class="ent-card__overlay-label">Analytics, Data &amp; AI</span>
+          </div>
+        </article>
+        <article class="ent-card ent-reveal" tabindex="0">
+          <div class="ent-card__no">03 / 04</div>
+          <div class="ent-card__icon"><span class="material-symbols-outlined" aria-hidden="true">bolt</span></div>
+          <h3 class="ent-card__title">Automation &amp; AI Workflows</h3>
+          <p class="ent-card__body">Workflow automation, AI-assisted operations, and integration of agents into existing systems.</p>
+          <span class="ent-sticker ent-sticker--sage ent-card__corner">Auto</span>
+          <div class="ent-card__overlay" aria-hidden="true">
+            <img src="assets/cap-automation.webp" alt="" loading="lazy" decoding="async" />
+            <span class="ent-card__overlay-label">Automation &amp; AI Workflows</span>
+          </div>
+        </article>
+        <article class="ent-card ent-reveal" tabindex="0">
+          <div class="ent-card__no">04 / 04</div>
+          <div class="ent-card__icon"><span class="material-symbols-outlined" aria-hidden="true">strategy</span></div>
+          <h3 class="ent-card__title">Advisory &amp; Transformation</h3>
+          <p class="ent-card__body">Digital strategy, programme governance, transformation advisory, and operating model design.</p>
+          <span class="ent-sticker ent-sticker--blush ent-card__corner">Guide</span>
+          <div class="ent-card__overlay" aria-hidden="true">
+            <img src="assets/cap-advisory.webp" alt="" loading="lazy" decoding="async" />
+            <span class="ent-card__overlay-label">Advisory &amp; Transformation</span>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== How We Get It Done: revolving particle sphere =====
+       Split layout: tag/heading/description sit in the LEFT column, the
+       rotating sphere sits in the RIGHT column. A single floating step
+       card tracks the screen-space position of whichever numbered node
+       is currently front-facing (highest z) — when the active node
+       changes, its card cross-fades in beside the new front number.
+       Invisible <button> nodes overlay each marker for keyboard / click
+       snap-to-step. See site.js → "Enterprise sphere". -->
+  <section class="ent-section ent-section--cream">
+    <div class="ent-container">
+      <div class="ent-sphere-stage ent-reveal" id="ent-sphere-stage">
+        <div class="ent-sphere-intro">
+          <span class="ent-eyebrow">04 / The Process</span>
+          <h2 class="ent-display ent-display--lg ent-sphere-intro__title">How We Get It Done.</h2>
+          <p class="ent-sphere-intro__desc">A consistent approach across every engagement — from first brief to live system.</p>
+          <p class="ent-sphere-hint" id="ent-sphere-hint">
+            <span class="material-symbols-outlined" aria-hidden="true">drag_pan</span>
+            drag to spin
+          </p>
+        </div>
+
+        <div class="ent-sphere-area">
+          <div class="ent-sphere-orb">
+            <canvas class="ent-sphere-canvas" id="ent-sphere-canvas" aria-hidden="true"></canvas>
+
+            <!-- Focusable buttons overlay each marker (positioned by JS via
+                 CSS vars). Visually transparent — the canvas draws the dot.
+                 Tab cycles through them; Enter / arrows snap that step to front. -->
+            <div class="ent-sphere-nodes" id="ent-sphere-nodes" role="group" aria-label="Process steps">
+              <button class="ent-sphere-node" type="button" data-step="0" aria-label="Step 1 of 4: Frame the Problem"></button>
+              <button class="ent-sphere-node" type="button" data-step="1" aria-label="Step 2 of 4: Design the Path"></button>
+              <button class="ent-sphere-node" type="button" data-step="2" aria-label="Step 3 of 4: Build With Care"></button>
+              <button class="ent-sphere-node" type="button" data-step="3" aria-label="Step 4 of 4: Operate &amp; Evolve"></button>
+            </div>
+
+            <!-- Numbered "carousel" pager — easier tap targets than the
+                 on-sphere markers, especially on small screens. Click a
+                 number to snap that step to the front. -->
+            <div class="ent-sphere-dots" id="ent-sphere-dots" role="tablist" aria-label="Process steps">
+              <button class="ent-sphere-dot" type="button" data-step="0" aria-label="Go to step 1: Frame the Problem">1</button>
+              <button class="ent-sphere-dot" type="button" data-step="1" aria-label="Go to step 2: Design the Path">2</button>
+              <button class="ent-sphere-dot" type="button" data-step="2" aria-label="Go to step 3: Build With Care">3</button>
+              <button class="ent-sphere-dot" type="button" data-step="3" aria-label="Go to step 4: Operate &amp; Evolve">4</button>
+            </div>
+
+            <!-- Step cards. Each card snaps to its node's last screen position
+                 when activated; only the active one is visible (cross-faded). -->
+            <div class="ent-sphere-cards" id="ent-sphere-cards" aria-hidden="true">
+              <article class="ent-sphere-card" data-step="0">
+                <span class="ent-sphere-card__chip">Step 01</span>
+                <h4 class="ent-sphere-card__title">Frame the Problem</h4>
+                <p>We listen first. Then we map the real shape of the system, the constraints, and the outcome you actually need.</p>
+              </article>
+              <article class="ent-sphere-card" data-step="1">
+                <span class="ent-sphere-card__chip">Step 02</span>
+                <h4 class="ent-sphere-card__title">Design the Path</h4>
+                <p>Architecture, data flows, interaction patterns — sketched out before a line of code so the destination is clear.</p>
+              </article>
+              <article class="ent-sphere-card" data-step="2">
+                <span class="ent-sphere-card__chip">Step 03</span>
+                <h4 class="ent-sphere-card__title">Build With Care</h4>
+                <p>Code, integrations, dashboards, automations — built by the same people who designed them. No throw-overs.</p>
+              </article>
+              <article class="ent-sphere-card" data-step="3">
+                <span class="ent-sphere-card__chip">Step 04</span>
+                <h4 class="ent-sphere-card__title">Operate &amp; Evolve</h4>
+                <p>We don't disappear at go-live. We help operate, measure, and iterate so the system actually delivers value.</p>
+              </article>
+            </div>
+          </div>
+        </div>
+
+        <!-- Static list shown to screen readers and used as the
+             prefers-reduced-motion fallback. -->
+        <ol class="ent-sphere-fallback">
+          <li><strong>Step 01 · Frame the Problem</strong>We listen first. Then we map the real shape of the system, the constraints, and the outcome you actually need.</li>
+          <li><strong>Step 02 · Design the Path</strong>Architecture, data flows, interaction patterns — sketched out before a line of code so the destination is clear.</li>
+          <li><strong>Step 03 · Build With Care</strong>Code, integrations, dashboards, automations — built by the same people who designed them. No throw-overs.</li>
+          <li><strong>Step 04 · Operate &amp; Evolve</strong>We don't disappear at go-live. We help operate, measure, and iterate so the system actually delivers value.</li>
+        </ol>
+
+        <!-- Screen-reader announcement for active-step changes -->
+        <div class="ent-sphere-live" aria-live="polite" aria-atomic="true" id="ent-sphere-live"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== Featured Work: polaroid case studies ===== -->
+  <section class="ent-section ent-section--cream">
+    <div class="ent-container">
+      <div class="ent-section-head ent-reveal">
+        <div>
+          <span class="ent-eyebrow">05 / Recent Work</span>
+          <h2 class="ent-display ent-display--lg ent-section-head__title">Stuff We Shipped.</h2>
+        </div>
+        <p class="ent-section-head__side">Three engagements across government and enterprise — live, deployed, in production today.</p>
+      </div>
+      <div class="ent-polaroids ent-reveal">
+        <a href="work.html" class="ent-polaroid">
+          <span class="ent-polaroid__tape" aria-hidden="true"></span>
+          <img class="ent-polaroid__img" src="assets/case-national-platform.webp" alt="" />
+          <p class="ent-polaroid__caption">National Digital Platform<small>Public sector · live</small></p>
+        </a>
+        <a href="work.html" class="ent-polaroid">
+          <span class="ent-polaroid__tape" aria-hidden="true"></span>
+          <img class="ent-polaroid__img" src="assets/case-workforce-analytics.webp" alt="" />
+          <p class="ent-polaroid__caption">Workforce Intelligence<small>Workforce · analytics</small></p>
+        </a>
+        <a href="work.html" class="ent-polaroid">
+          <span class="ent-polaroid__tape" aria-hidden="true"></span>
+          <img class="ent-polaroid__img" src="assets/case-enterprise-automation.webp" alt="" />
+          <p class="ent-polaroid__caption">Enterprise Automation<small>Enterprise · in production</small></p>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== Who We Work With: index-card crew board ===== -->
+  <section class="ent-section ent-section--mist">
+    <div class="ent-container">
+      <div class="ent-section-head ent-reveal">
+        <div>
+          <span class="ent-eyebrow">06 / Partners</span>
+          <h2 class="ent-display ent-display--lg ent-section-head__title">Who We Work With.</h2>
+        </div>
+        <p class="ent-section-head__side">Institutions and delivery teams turning complex mandates into usable digital systems — these are the folks we partner with.</p>
+      </div>
+      <div class="ent-partners">
+        <article class="ent-partner ent-partner--terra ent-reveal">
+          <div class="ent-partner__tab">
+            <span class="ent-partner__num">01</span>
+            <span class="ent-partner__cat">Public Sector</span>
+          </div>
+          <div class="ent-partner__body">
+            <h3 class="ent-partner__title">Government agencies &amp; statutory bodies</h3>
+            <p class="ent-partner__tag">Multi-agency digital mandates</p>
+            <p class="ent-partner__copy">Institutions coordinating services, systems, and public data across complex environments.</p>
+          </div>
+          <span class="ent-partner__seal" aria-hidden="true">Gov</span>
+        </article>
+        <article class="ent-partner ent-partner--sky ent-reveal">
+          <div class="ent-partner__tab">
+            <span class="ent-partner__num">02</span>
+            <span class="ent-partner__cat">Enterprise</span>
+          </div>
+          <div class="ent-partner__body">
+            <h3 class="ent-partner__title">Government-linked companies &amp; enterprises</h3>
+            <p class="ent-partner__tag">Operating at institutional scale</p>
+            <p class="ent-partner__copy">Organisations modernising core systems, analytics layers, and operational workflows.</p>
+          </div>
+          <span class="ent-partner__seal" aria-hidden="true">Ent</span>
+        </article>
+        <article class="ent-partner ent-partner--sage ent-reveal">
+          <div class="ent-partner__tab">
+            <span class="ent-partner__num">03</span>
+            <span class="ent-partner__cat">Delivery Partners</span>
+          </div>
+          <div class="ent-partner__body">
+            <h3 class="ent-partner__title">Technology partners &amp; system integrators</h3>
+            <p class="ent-partner__tag">Shared implementation depth</p>
+            <p class="ent-partner__copy">Partner teams needing architecture, data, automation, or delivery support to ship the work.</p>
+          </div>
+          <span class="ent-partner__seal" aria-hidden="true">Dev</span>
+        </article>
+        <article class="ent-partner ent-partner--blush ent-reveal">
+          <div class="ent-partner__tab">
+            <span class="ent-partner__num">04</span>
+            <span class="ent-partner__cat">Innovation</span>
+          </div>
+          <div class="ent-partner__body">
+            <h3 class="ent-partner__title">Innovation &amp; venture initiatives</h3>
+            <p class="ent-partner__tag">From concept to usable systems</p>
+            <p class="ent-partner__copy">New ventures translating ideas into platforms, pilots, and deployable products.</p>
+          </div>
+          <span class="ent-partner__seal" aria-hidden="true">New</span>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== Big CTA ===== -->
+  <section class="ent-bigcta" id="ent-cta">
+    <div class="ent-container ent-reveal">
+      <div class="ent-bigcta__panel">
+        <img class="ent-bigcta__cat" id="ent-cta-cat" src="assets/beachcatstand.webp" alt="Oyen mascot" loading="lazy" decoding="async" />
+        <h2 class="ent-bigcta__title">Wanna Build Something That Actually Ships?</h2>
+        <p class="ent-bigcta__sub">Drop us a note. We'll have a real conversation about your context, your constraints, and whether we're the right crew for it.</p>
+        <div class="ent-bigcta__actions">
+          <a href="contact.html" class="ent-btn ent-btn--primary" style="background:#fff; color:var(--ent-ink); border-color:var(--ent-ink);">Send a high-five</a>
+          <a href="work.html" class="ent-btn" style="background:transparent; color:#fff; border-color:#fff; box-shadow:4px 4px 0 rgba(0,0,0,0.4);">See the work</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</div><!-- /[data-theme-only="enterprise"] -->
+
+
+<button class="to-top" id="to-top" type="button" aria-label="Back to top">
+  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 19V5M5 12l7-7 7 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+</button>
+
+<!-- ===== FOOTER ===== -->
+<footer class="footer">
+  <div class="footer__inner">
+    <div class="footer__cols">
+      <div>
+        <a href="home.html" class="nav__logo">
+          <img src="assets/A28_logo.svg" alt="A28 Global" />
+        </a>
+        <p style="margin-top: 24px; max-width: 380px; color: var(--a28-paper-70); font-weight: 300; line-height: 1.65;">
+          Designing and delivering digital systems, data, and AI for governments and enterprises operating in complex environments.
+        </p>
+        <div style="margin-top: 32px; display: flex; gap: 12px; align-items: center;">
+          <span class="a28-eyebrow on-dark">A28 Global Sdn. Bhd.</span>
+        </div>
+      </div>
+      <div>
+        <div class="a28-eyebrow on-dark" style="margin-bottom: 20px;">Practice</div>
+        <ul class="footer__list">
+          <li><a href="about.html">About</a></li>
+          <li><a href="capabilities.html">Capabilities</a></li>
+          <li><a href="work.html">Case Studies</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="a28-eyebrow on-dark" style="margin-bottom: 20px;">Contact</div>
+        <ul class="footer__list">
+          <li><a href="mailto:hello@a28global.com">hello@a28global.com</a></li>
+          <li><a href="tel:+60123915188">+60 12-391 5188</a></li>
+          <li><a href="contact.html">Schedule a call</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="a28-eyebrow on-dark" style="margin-bottom: 20px;">Legal</div>
+        <ul class="footer__list">
+          <li><a href="#">Privacy</a></li>
+          <li><a href="#">Terms</a></li>
+          <li><a href="#">Cookies</a></li>
+        </ul>
+      </div>
+    </div>
+    <hr class="a28-rule on-dark" style="margin: 64px 0 24px;" />
+    <div class="footer__legal">
+      <span>© 2026 A28 GLOBAL — ALL RIGHTS RESERVED</span>
+    </div>
+  </div>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script src="assets/site.js"></script>
+</body>
+</html>

@@ -1,0 +1,243 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Case Studies - A28 Global</title>
+<meta name="description" content="A28 Global selected engagements across public sector and enterprise environments." />
+<script>
+(function(){var a={enterprise:1,government:1};var r=null;try{r=new URLSearchParams(location.search).get('route');}catch(e){}if(!a[r]){try{r=sessionStorage.getItem('a28-route');}catch(e){}}if(!a[r])r='enterprise';try{sessionStorage.setItem('a28-route',r);}catch(e){}document.documentElement.dataset.theme=r;})();
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Oranienbaum&family=Inter:wght@200;300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,300,0,0" rel="stylesheet" />
+<link rel="stylesheet" href="assets/tokens.css" />
+<link rel="stylesheet" href="assets/site.css" />
+<link rel="stylesheet" href="assets/enterprise.css" />
+<script src="assets/theme.js"></script>
+</head>
+<body>
+
+<header class="nav is-dark">
+  <div class="nav__inner">
+    <a href="home.html" class="nav__logo"><img src="assets/A28_logo.svg" alt="A28 Global" /></a>
+    <nav class="nav__links">
+      <a class="nav__link" data-page="about.html" href="about.html">About</a>
+      <a class="nav__link" data-page="capabilities.html" href="capabilities.html">Capabilities</a>
+      <a class="nav__link" data-page="work.html" href="work.html">Case Studies</a>
+      <a href="contact.html" class="a28-btn a28-btn--secondary on-dark">Let's Talk! <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M2 8h12M9 3l5 5-5 5" stroke="currentColor" stroke-width="1.25" stroke-linecap="square"/></svg></a>
+    </nav>
+    <button class="nav__burger" id="nav-burger" aria-label="Open menu"><svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M3 7h18M3 12h18M3 17h18" stroke="currentColor" stroke-width="1.5" stroke-linecap="square"/></svg></button>
+  </div>
+</header>
+
+<div class="mobile-menu" id="mobile-menu" aria-hidden="true">
+  <div class="mobile-menu__top">
+    <a href="home.html" class="nav__logo"><img src="assets/A28_logo.svg" alt="A28 Global" /></a>
+    <button class="mobile-menu__close" id="mobile-menu-close" aria-label="Close menu"><svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M5 5l14 14M19 5L5 19" stroke="currentColor" stroke-width="1.5" stroke-linecap="square"/></svg></button>
+  </div>
+  <nav class="mobile-menu__nav">
+    <a data-page="about.html" href="about.html">About</a>
+    <a data-page="capabilities.html" href="capabilities.html">Capabilities</a>
+    <a data-page="work.html" href="work.html">Case Studies</a>
+  </nav>
+  <div class="mobile-menu__cta">
+    <a href="contact.html" class="a28-btn a28-btn--primary on-dark a28-btn--lg">Let's Talk!
+      <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M2 8h12M9 3l5 5-5 5" stroke="currentColor" stroke-width="1.25" stroke-linecap="square"/></svg>
+    </a>
+  </div>
+</div>
+
+
+
+<!-- ============================================================
+     ENTERPRISE ROUTE — fresh case-studies gallery
+     ============================================================ -->
+<div data-theme-only="enterprise" class="ent-page">
+
+  <!-- ===== Hero ===== -->
+  <section class="ent-work-hero">
+    <div class="ent-container ent-reveal">
+      <span class="ent-cap-hero__sticker">Sketchbook · A28 Global</span>
+      <h1 class="ent-display ent-display--xl ent-work-hero__title">The Work Table.</h1>
+      <p class="ent-work-hero__sub">A selection of engagements across public sector and enterprise environments — live, deployed, and running in production today.</p>
+    </div>
+  </section>
+
+  <!-- ===== Polaroid gallery ===== -->
+  <section class="ent-shelf">
+    <div class="ent-container">
+      <div class="ent-shelf__row ent-reveal">
+        <a class="ent-polaroid" href="#ent-case-01">
+          <span class="ent-polaroid__tape" aria-hidden="true"></span>
+          <img class="ent-polaroid__img" src="assets/case-national-platform.webp" alt="" />
+          <p class="ent-polaroid__caption">National Platform<small>Public sector · live</small></p>
+        </a>
+        <a class="ent-polaroid" href="#ent-case-02">
+          <span class="ent-polaroid__tape" aria-hidden="true"></span>
+          <img class="ent-polaroid__img" src="assets/case-workforce-analytics.webp" alt="" />
+          <p class="ent-polaroid__caption">Workforce Intelligence<small>Analytics · policy</small></p>
+        </a>
+        <a class="ent-polaroid" href="#ent-case-03">
+          <span class="ent-polaroid__tape" aria-hidden="true"></span>
+          <img class="ent-polaroid__img" src="assets/case-enterprise-automation.webp" alt="" />
+          <p class="ent-polaroid__caption">Enterprise Automation<small>Integration · ops</small></p>
+        </a>
+      </div>
+
+      <!-- Case 01 -->
+      <article class="ent-case ent-reveal" id="ent-case-01">
+        <div class="ent-case__body">
+          <span class="ent-sticker ent-sticker--terra">01 · Public Sector</span>
+          <h2 class="ent-display ent-display--md ent-case__title">National Digital Platform</h2>
+          <p class="ent-case__lead">Multi-agency platform supporting integrated services and data sharing across government bodies.</p>
+          <div class="ent-case__cols">
+            <div class="ent-case__col">
+              <h3>What we did</h3>
+              <ul>
+                <li>Designed multi-stakeholder architecture</li>
+                <li>Built integrated data pipelines &amp; dashboards</li>
+                <li>Wired up operational workflow systems</li>
+              </ul>
+            </div>
+            <div class="ent-case__col">
+              <h3>Impact</h3>
+              <ul>
+                <li>Better coordination across agencies</li>
+                <li>Data-driven decision-making enabled</li>
+                <li>Reduced fragmentation across systems</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="ent-case__media">
+          <img src="assets/case-national-platform.webp" alt="" />
+        </div>
+      </article>
+
+      <!-- Case 02 -->
+      <article class="ent-case ent-case--mist ent-case--flip ent-reveal" id="ent-case-02">
+        <div class="ent-case__media">
+          <img src="assets/case-workforce-analytics.webp" alt="" />
+        </div>
+        <div class="ent-case__body">
+          <span class="ent-sticker ent-sticker--sky">02 · Workforce</span>
+          <h2 class="ent-display ent-display--md ent-case__title">Workforce Intelligence</h2>
+          <p class="ent-case__lead">National-level platform for labour market insights and analytics.</p>
+          <div class="ent-case__cols">
+            <div class="ent-case__col">
+              <h3>What we did</h3>
+              <ul>
+                <li>Structured large-scale jobs &amp; skills data</li>
+                <li>Built predictive models &amp; dashboards</li>
+                <li>Designed exploration interfaces</li>
+              </ul>
+            </div>
+            <div class="ent-case__col">
+              <h3>Impact</h3>
+              <ul>
+                <li>Enabled policy &amp; workforce planning</li>
+                <li>Made labour-market data accessible</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <!-- Case 03 -->
+      <article class="ent-case ent-case--peach ent-reveal" id="ent-case-03">
+        <div class="ent-case__body">
+          <span class="ent-sticker ent-sticker--sage">03 · Enterprise</span>
+          <h2 class="ent-display ent-display--md ent-case__title">Enterprise System &amp; Automation</h2>
+          <p class="ent-case__lead">Enterprise environment requiring system integration and process automation.</p>
+          <div class="ent-case__cols">
+            <div class="ent-case__col">
+              <h3>What we did</h3>
+              <ul>
+                <li>Integrated multiple systems &amp; data sources</li>
+                <li>Designed automation workflows</li>
+                <li>Implemented reporting &amp; dashboards</li>
+              </ul>
+            </div>
+            <div class="ent-case__col">
+              <h3>Impact</h3>
+              <ul>
+                <li>Cut manual workload</li>
+                <li>Better accuracy &amp; turnaround</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="ent-case__media">
+          <img src="assets/case-enterprise-automation.webp" alt="" />
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <!-- ===== Big CTA ===== -->
+  <section class="ent-bigcta">
+    <div class="ent-container ent-reveal">
+      <div class="ent-bigcta__panel">
+        <h2 class="ent-bigcta__title">Got a Complex<br/>System to Build?</h2>
+        <p class="ent-bigcta__sub">We work at the intersection of strategy, architecture, and execution — bridging high-level intent with real, deployable systems.</p>
+        <div class="ent-bigcta__actions">
+          <a href="contact.html" class="ent-btn ent-btn--primary" style="background:#fff; color:var(--ent-ink); border-color:var(--ent-ink);">Start a conversation</a>
+        </div>
+        <img class="ent-bigcta__mascot" src="assets/beachcatstand.webp" alt="" loading="lazy" decoding="async" />
+      </div>
+    </div>
+  </section>
+
+</div><!-- /[data-theme-only="enterprise"] -->
+
+<button class="to-top" id="to-top" type="button" aria-label="Back to top">
+  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 19V5M5 12l7-7 7 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+</button>
+
+<footer class="footer">
+  <div class="footer__inner">
+    <div class="footer__cols">
+      <div>
+        <a href="home.html" class="nav__logo"><img src="assets/A28_logo.svg" alt="A28 Global" /></a>
+        <p style="margin-top: 24px; max-width: 380px; color: var(--a28-paper-70); font-weight: 300; line-height: 1.65;">Designing and delivering digital systems, data, and AI for governments and enterprises operating in complex environments.</p>
+        <div style="margin-top: 32px; display: flex; gap: 12px; align-items: center;">
+          <span class="a28-eyebrow on-dark">A28 Global Sdn. Bhd.</span>
+        </div>
+      </div>
+      <div>
+        <div class="a28-eyebrow on-dark" style="margin-bottom: 20px;">Practice</div>
+        <ul class="footer__list">
+          <li><a href="about.html">About</a></li>
+          <li><a href="capabilities.html">Capabilities</a></li>
+          <li><a href="work.html">Case Studies</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="a28-eyebrow on-dark" style="margin-bottom: 20px;">Contact</div>
+        <ul class="footer__list">
+          <li><a href="mailto:hello@a28global.com">hello@a28global.com</a></li>
+          <li><a href="tel:+60123915188">+60 12-391 5188</a></li>
+          <li><a href="contact.html">Schedule a call</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="a28-eyebrow on-dark" style="margin-bottom: 20px;">Legal</div>
+        <ul class="footer__list">
+          <li><a href="#">Privacy</a></li>
+          <li><a href="#">Terms</a></li>
+          <li><a href="#">Cookies</a></li>
+        </ul>
+      </div>
+    </div>
+    <hr class="a28-rule on-dark" style="margin: 64px 0 24px;" />
+    <div class="footer__legal">
+      <span>© 2026 A28 GLOBAL - ALL RIGHTS RESERVED</span>
+    </div>
+  </div>
+</footer>
+
+<script src="assets/site.js"></script>
+</body>
+</html>
