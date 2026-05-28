@@ -230,7 +230,7 @@
     // landscape (which match the "desktop" layout) still auto-rotate.
     const isTouchPrimary = window.matchMedia('(hover: none), (pointer: coarse)').matches;
     if (!reduceMotion && isTouchPrimary) {
-      const FRAME_INTERVAL_MS = 750;
+      const FRAME_INTERVAL_MS = 240;
       let autoTimer = setInterval(() => setFrame(frame + 1), FRAME_INTERVAL_MS);
       document.addEventListener('visibilitychange', () => {
         if (document.hidden) {
