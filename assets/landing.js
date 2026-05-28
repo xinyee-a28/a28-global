@@ -221,6 +221,25 @@
         }
       }, { passive: false });
     }
+
+    // ---- Touch-device auto-rotation ----
+    // Phones and tablets have no cursor to scrub and no wheel to scroll, so
+    // the mascots would otherwise sit on a single frame. Spin them gently on
+    // a timer. ~750ms/frame → a full 8-frame turn every ~6 seconds.
+    // Detected via pointer/hover capability, not viewport width, so iPads in
+    // landscape (which match the "desktop" layout) still auto-rotate.
+    const isTouchPrimary = window.matchMedia('(hover: none), (pointer: coarse)').matches;
+    if (!reduceMotion && isTouchPrimary) {
+      const FRAME_INTERVAL_MS = 750;
+      let autoTimer = setInterval(() => setFrame(frame + 1), FRAME_INTERVAL_MS);
+      document.addEventListener('visibilitychange', () => {
+        if (document.hidden) {
+          if (autoTimer) { clearInterval(autoTimer); autoTimer = null; }
+        } else if (!autoTimer) {
+          autoTimer = setInterval(() => setFrame(frame + 1), FRAME_INTERVAL_MS);
+        }
+      });
+    }
   };
 
   if (document.readyState === 'loading') {
