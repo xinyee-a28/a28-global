@@ -12,3 +12,10 @@ desktop.ini
 
 # Image source PNGs — not served
 assets/img/**/_png_src/
+
+# wrangler files
+.wrangler
+.dev.vars*
+!.dev.vars.example
+.env*
+!.env.example
