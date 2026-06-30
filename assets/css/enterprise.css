@@ -1,0 +1,3126 @@
+/* ============================================================
+   A28 Global — Enterprise Route
+   Designer-toy workshop aesthetic. Cream + terracotta, paper-cut
+   shapes, sticker stamps, speech bubbles, polaroids, collectible
+   trading cards. Typography is shared with the Government route —
+   Oranienbaum (display) + Inter (body) + JetBrains Mono (meta) —
+   for visual consistency across the whole site.
+
+   All classes are prefixed `ent-` and live inside the
+   [data-theme-only="enterprise"] container, so they never affect
+   the Government route.
+   ============================================================ */
+
+/* ------------------------------------------------------------
+   ROOT / page surface
+   ------------------------------------------------------------ */
+.ent-page {
+  /* Clip horizontally so decorative mascots that hang past their card
+     (paw-dot, signboard mascot, footer peek heads, polaroid rotations)
+     can never induce a horizontal scroll. `clip` (vs hidden) preserves
+     position:sticky on the nav above. */
+  overflow-x: clip;
+  --ent-cream:        var(--a28-bone);
+  --ent-cream-deep:   #E8DECB;
+  --ent-cream-paper:  #FBF6EC;
+  --ent-ink:          var(--a28-ink);
+  --ent-ink-soft:     #6B5340;
+  --ent-terra:        var(--a28-gold-light);     /* #D17654 */
+  --ent-terra-deep:   var(--a28-gold);            /* #B14E2E */
+  --ent-peach:        var(--a28-gold-pale);       /* #F0C9A8 */
+  --ent-mist:         var(--a28-gold-mist);       /* #F7E0D0 */
+  --ent-sage:         #8FA17C;
+  --ent-sky:          #9FB9C9;
+  --ent-blush:        #E8B4A0;
+
+  /* Comma-separated RGB triples — used by canvas/JS for rgba() strings. */
+  --ent-terra-rgb:        209, 118, 84;
+  --ent-terra-deep-rgb:   177, 78, 46;
+  --ent-peach-rgb:        240, 201, 168;
+  --ent-mist-rgb:         247, 224, 208;
+  --ent-sage-rgb:         143, 161, 124;
+  --ent-sky-rgb:          159, 185, 201;
+  --ent-blush-rgb:        232, 180, 160;
+  --ent-cream-paper-rgb:  251, 246, 236;
+  --ent-ink-rgb:          28, 27, 31;
+
+  --ent-shadow-card:  0 18px 36px -18px rgba(61,44,32,0.25),
+                      0 4px 12px -4px rgba(61,44,32,0.12);
+  --ent-shadow-pop:   0 28px 48px -22px rgba(61,44,32,0.35),
+                      0 8px 18px -6px rgba(61,44,32,0.18);
+
+  font-family: var(--a28-font-sans);
+  color: var(--ent-ink);
+  font-weight: var(--a28-w-light);
+  line-height: var(--a28-lh-relaxed);
+}
+
+/* ------------------------------------------------------------
+   Shared display type
+   ------------------------------------------------------------ */
+.ent-display {
+  font-family: var(--a28-font-display);
+  font-weight: var(--a28-w-regular);
+  letter-spacing: var(--a28-track-display);
+  line-height: 0.96;
+  color: var(--ent-ink);
+}
+.ent-display--xl   { font-size: clamp(56px, 8vw, 128px); }
+.ent-display--lg   { font-size: clamp(44px, 6vw, 88px); }
+.ent-display--md   { font-size: clamp(32px, 4.6vw, 64px); }
+.ent-display--sm   { font-size: clamp(24px, 3.4vw, 42px); }
+
+.ent-eyebrow {
+  display: inline-flex; align-items: center; gap: 8px;
+  font-family: var(--a28-font-mono);
+  font-weight: var(--a28-w-medium);
+  font-size: 12px;
+  letter-spacing: var(--a28-track-eyebrow);
+  text-transform: uppercase;
+  color: var(--ent-terra-deep);
+}
+.ent-eyebrow::before {
+  content: "";
+  width: 24px; height: 2px;
+  background: currentColor;
+  border-radius: 2px;
+}
+
+.ent-lede {
+  font-size: clamp(17px, 1.4vw, 22px);
+  font-weight: 400;
+  line-height: 1.6;
+  color: var(--ent-ink-soft);
+  max-width: 60ch;
+}
+
+/* ------------------------------------------------------------
+   Pill button (chunky, friendly, bouncy)
+   ------------------------------------------------------------ */
+.ent-btn {
+  display: inline-flex; align-items: center; gap: 10px;
+  padding: 16px 28px;
+  font-family: var(--a28-font-sans);
+  font-weight: var(--a28-w-medium);
+  font-size: 15px;
+  letter-spacing: 0.01em;
+  border-radius: 999px;
+  border: 2px solid var(--ent-ink);
+  background: var(--ent-cream-paper);
+  color: var(--ent-ink);
+  cursor: pointer;
+  text-decoration: none;
+  transition: transform 220ms cubic-bezier(.34,1.56,.64,1),
+              box-shadow 220ms ease,
+              background 220ms ease;
+  box-shadow: 4px 4px 0 var(--ent-ink);
+}
+.ent-btn:hover {
+  transform: translate(-2px, -2px);
+  box-shadow: 6px 6px 0 var(--ent-ink);
+}
+.ent-btn:active {
+  transform: translate(2px, 2px);
+  box-shadow: 0 0 0 var(--ent-ink);
+}
+.ent-btn--primary {
+  background: var(--ent-terra);
+  color: #fff;
+  border-color: var(--ent-ink);
+}
+.ent-btn--ghost {
+  background: transparent;
+  border-style: dashed;
+}
+
+/* ------------------------------------------------------------
+   Stickers / stamps / badges
+   ------------------------------------------------------------ */
+.ent-sticker {
+  display: inline-block;
+  padding: 6px 12px;
+  border-radius: 999px;
+  background: var(--ent-mist);
+  color: var(--ent-ink);
+  font-family: var(--a28-font-mono);
+  font-weight: var(--a28-w-medium);
+  font-size: 11px;
+  letter-spacing: var(--a28-track-eyebrow);
+  text-transform: uppercase;
+  border: 1.5px solid var(--ent-ink);
+}
+.ent-sticker--terra { background: var(--ent-terra); color: #fff; }
+.ent-sticker--sage  { background: var(--ent-sage);  color: #fff; }
+.ent-sticker--sky   { background: var(--ent-sky);   color: #fff; }
+.ent-sticker--blush { background: var(--ent-blush); color: var(--ent-ink); }
+
+.ent-stamp {
+  position: absolute;
+  display: inline-flex; align-items: center; justify-content: center;
+  width: 72px; height: 72px;
+  border-radius: 50%;
+  background: var(--ent-terra-deep);
+  color: #fff;
+  font-family: var(--a28-font-mono);
+  font-weight: var(--a28-w-medium);
+  font-size: 11px;
+  letter-spacing: var(--a28-track-eyebrow);
+  text-transform: uppercase;
+  text-align: center;
+  transform: rotate(-12deg);
+  box-shadow: 4px 4px 0 var(--ent-ink);
+  border: 2px dashed rgba(255,255,255,0.35);
+  line-height: 1.1;
+  padding: 4px;
+}
+
+/* ------------------------------------------------------------
+   Tape decoration (used on polaroids, signs, etc.)
+   ------------------------------------------------------------ */
+.ent-tape {
+  position: absolute;
+  width: 80px; height: 22px;
+  background: rgba(217, 178, 122, 0.6);
+  box-shadow: 0 4px 6px rgba(0,0,0,0.08);
+  pointer-events: none;
+}
+.ent-tape::before, .ent-tape::after {
+  content: "";
+  position: absolute;
+  width: 4px; height: 100%;
+  top: 0;
+  background:
+    linear-gradient(90deg, transparent 25%, rgba(255,255,255,0.4) 50%, transparent 75%);
+}
+.ent-tape::before { left: 0; }
+.ent-tape::after  { right: 0; }
+
+/* ------------------------------------------------------------
+   Container
+   ------------------------------------------------------------ */
+.ent-container {
+  max-width: 1240px;
+  margin: 0 auto;
+  padding: 0 clamp(24px, 4.5vw, 64px);
+  position: relative;
+}
+
+/* ============================================================
+   HOME: scroll-jacked marquee hero (spinning capybara)
+   Pinned full-screen layout: description on top, the giant line in the
+   middle (pans horizontally on scroll), CTAs below. A big capy cut-out
+   crosses from right to left in FRONT (it may pass over the description).
+   See site.js. Mobile + reduced-motion fall back to a static stack.
+   ============================================================ */
+.ent-hero {
+  position: relative;
+  z-index: 1;                       /* sits below the sticky nav (z 50) */
+  height: 100vh;
+  min-height: 600px;
+  /* Cap the hero height on tall viewports (especially iPad portrait, where
+     100vh = 1366px). Without this cap, justify-content: center spreads
+     ~400px of empty space above the badge and below the CTAs. 860px keeps
+     the section feeling like a single screen on desktop monitors and
+     prevents the "empty hero" look on tablet portrait. */
+  max-height: 860px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: clamp(18px, 3vh, 40px);
+  /* Pull the hero up so its cream surface starts at the very top of the
+     viewport (behind the sticky 72px nav). Padding-top (80px) still
+     clears the nav, so the content stays put visually — only the
+     background extends up. Reset in the mobile fallback below. */
+  margin-top: -72px;
+  padding: 80px 0 36px;             /* top padding clears the sticky nav */
+  overflow: hidden;
+  background:
+    radial-gradient(circle at 50% 42%, rgba(240,201,168,0.45), transparent 60%),
+    var(--ent-cream-paper);
+  /* Hide the whole hero until site.js has pinned it and positioned the
+     marquee + capy at the timeline's progress-0 state. Without this,
+     the natural (un-jacked) layout paints first — the huge marquee
+     line sits at x:0 and overflows to one side, the capy is missing,
+     and everything snaps into place a frame later. Mobile / reduced-
+     motion restores opacity below since JS does not run there. */
+  opacity: 0;
+}
+.ent-hero.is-ready {
+  opacity: 1;
+  transition: opacity 360ms ease;
+}
+.ent-hero__viewport {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  overflow: hidden;
+}
+/* The Enterprise hero marquee is the single typographic exception on the site —
+   it keeps Manrope 800 uppercase from the original design because Oranienbaum
+   reads too quiet at 220px and the chunky display sans is core to this section's
+   identity. The `gap` is wider than the original so each word reads as a clearly
+   spaced beat as the line pans horizontally. */
+.ent-hero__line {
+  margin: 0;
+  display: inline-flex;
+  align-items: center;
+  /* 3.3: reduced from clamp(96px,15vw,220px)/gap 70px so the scroll-jack
+     (pin length ∝ line width) needs much less scroll. Manrope 800 chunky
+     identity preserved — just smaller. */
+  gap: clamp(18px, 1.8vw, 42px);
+  padding: 0 6vw;
+  white-space: nowrap;
+  will-change: transform;
+  font-family: "Manrope", var(--a28-font-sans);
+  font-weight: 800;
+  font-size: clamp(62px, 10vw, 150px);
+  line-height: 0.9;
+  letter-spacing: -0.05em;
+  text-transform: uppercase;
+  color: var(--ent-ink);
+}
+.ent-hero__word { display: inline-block; }
+.ent-hero__word--alt { color: var(--ent-ink-soft); }   /* lighter brown, alternates per word */
+.ent-hero__word--accent {
+  background: linear-gradient(110deg, var(--ent-terra) 0%, var(--ent-terra-deep) 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* Big spinning capy cut-out, overlaid in FRONT of the text. Frames are
+   transparent PNGs, so it just floats with a soft drop-shadow. */
+.ent-hero__capy {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  z-index: 3;
+  width: clamp(360px, 44vw, 600px);
+  height: clamp(360px, 44vw, 600px);
+  pointer-events: none;
+  transform: translate(-50%, -50%);
+  /* Stay hidden until site.js positions the capy at its scroll-jack
+     start (right of centre). Otherwise the capy paints centred for one
+     frame before GSAP moves it, causing a visible flash on load. The
+     mobile / reduced-motion media query below restores opacity since
+     JS does not run in those branches. */
+  opacity: 0;
+}
+.ent-hero__capy.is-ready {
+  opacity: 1;
+  transition: opacity 280ms ease;
+}
+/* Soft ground / contact shadow that "puddles" beneath the capy's feet,
+   so it reads as standing on a surface (cf. bikebear hero). Sits behind
+   the image via z-index:-1 inside the capy's own stacking context, and
+   travels with it during the scroll-jack. The silhouette drop-shadow
+   lives on the <img> below, not the parent, so it doesn't get cast over
+   this ground shadow as well. */
+.ent-hero__capy::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: 18%;                          /* tucked up close to the capy's feet */
+  width: 52%;
+  height: 28px;
+  transform: translateX(-50%);
+  border-radius: 50%;
+  background: radial-gradient(ellipse at center,
+                              rgba(61,44,32,0.55),
+                              rgba(61,44,32,0.20) 45%,
+                              transparent 72%);
+  filter: blur(10px);
+  z-index: -1;
+  pointer-events: none;
+}
+.ent-hero__capy-img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  user-select: none;
+  -webkit-user-drag: none;
+  /* Silhouette drop-shadow — moved off the parent so it doesn't also
+     cast a shifted copy of the ::after ground shadow. */
+  filter: drop-shadow(0 18px 22px rgba(61,44,32,0.28));
+}
+/* Description (above the line) + CTAs (below it) — both pinned in the hero */
+.ent-hero__badge {
+  position: relative;
+  z-index: 4;                       /* stays above the travelling capy */
+  margin-bottom: clamp(20px, 4vh, 56px);  /* extra breathing room under the badge */
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 9px 18px;
+  background: rgba(255, 255, 255, 0.6);
+  border: 2px solid var(--ent-ink);
+  border-radius: 999px;
+  box-shadow: 3px 3px 0 var(--ent-ink);
+  transform: rotate(-1.5deg);
+  font-family: var(--a28-font-mono);
+  font-weight: var(--a28-w-medium);
+  font-size: clamp(10px, 1vw, 12px);
+  letter-spacing: var(--a28-track-eyebrow);
+  text-transform: uppercase;
+  color: var(--ent-ink);
+}
+.ent-hero__badge-dot {
+  width: 8px; height: 8px;
+  border-radius: 50%;
+  background: var(--ent-terra);
+  box-shadow: 0 0 0 3px rgba(209, 118, 84, 0.22);
+}
+.ent-hero__badge-sep { color: var(--ent-terra-deep); }
+
+.ent-hero__lead {
+  position: relative;
+  z-index: 2;                       /* the capy (z 3) may pass in front of it */
+  margin: 0 0 clamp(32px, 6vh, 80px);  /* big gap below, lifts it up */
+  max-width: 82ch;
+  padding: 0 clamp(24px, 5vw, 64px);
+  text-align: center;
+  font-size: clamp(16px, 1.3vw, 18px);
+  font-weight: 500;
+  line-height: 1.5;
+  color: var(--ent-ink-soft);
+}
+.ent-hero__actions {
+  position: relative;
+  z-index: 4;                       /* stays above the capy so CTAs are usable */
+  margin-top: clamp(32px, 6vh, 76px);  /* space between the line and the buttons */
+  display: flex;
+  gap: 28px;
+  flex-wrap: wrap;
+  justify-content: center;
+  padding: 0 20px;
+}
+
+/* Static fallback — small screens + reduced motion (stacks naturally:
+   description, line, capy, CTAs) */
+@media (max-width: 767px), (prefers-reduced-motion: reduce) {
+  .ent-hero {
+    height: auto;
+    min-height: 0;
+    max-height: none;               /* mobile stack is content-tall, never capped */
+    justify-content: flex-start;
+    gap: clamp(20px, 5vw, 36px);
+    padding: clamp(64px, 14vw, 104px) 0 clamp(40px, 9vw, 72px);
+    margin-top: 0;                  /* keep natural stack on mobile */
+    opacity: 1;                     /* JS never runs here — keep visible */
+  }
+  .ent-hero__viewport { overflow: visible; }
+  .ent-hero__line {
+    display: block;
+    white-space: normal;
+    text-align: center;
+    padding: 0 clamp(24px, 5vw, 48px);
+    font-size: clamp(34px, 10vw, 68px);
+    line-height: 0.95;
+    will-change: auto;
+    transform: none !important;     /* neutralise any GSAP transform */
+    overflow-wrap: anywhere;        /* safety on super-narrow screens */
+  }
+  .ent-hero__word { display: inline; }
+  .ent-hero__capy {
+    position: static;
+    transform: none !important;
+    width: clamp(240px, 66vw, 340px);
+    height: clamp(240px, 66vw, 340px);
+    opacity: 1;                         /* JS never runs here — keep visible */
+  }
+}
+
+/* ============================================================
+   HOME: mascot dialogue intro card
+   ============================================================ */
+.ent-dialogue {
+  padding: clamp(40px, 5vw, 80px) 0;
+}
+.ent-dialogue__panel {
+  position: relative;
+  background: var(--ent-cream-paper);
+  border: 2.5px solid var(--ent-ink);
+  border-radius: 28px;
+  padding: clamp(28px, 4vw, 56px);
+  box-shadow: 8px 8px 0 var(--ent-ink);
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: clamp(20px, 4vw, 48px);
+  align-items: center;
+}
+.ent-dialogue__avatars {
+  display: flex;
+  align-items: center;
+}
+.ent-dialogue__avatar {
+  width: 184px; height: 184px;
+  border-radius: 50%;
+  overflow: hidden;
+  background: var(--ent-peach);
+  border: 3px solid var(--ent-ink);
+  position: relative;
+  flex-shrink: 0;
+  animation: ent-avatar-bob 3.4s ease-in-out infinite;
+}
+.ent-dialogue__avatar:first-child {
+  z-index: 2;                                    /* Techybara sits in front */
+  box-shadow: 0 0 0 5px var(--ent-cream-paper);  /* ring separates the pair */
+}
+.ent-dialogue__avatar:nth-child(2) {
+  margin-left: -16px;                            /* light overlap — still a pair, but each face reads */
+  background: var(--ent-mist);
+  animation-delay: -1.7s;                        /* half a cycle behind → bobs opposite the first */
+}
+.ent-dialogue__avatar img {
+  position: absolute;
+  left: 50%;
+  top: -10%;
+  width: 164%;
+  height: 164%;
+  transform: translateX(-50%);
+  object-fit: cover;                             /* head-framed crop (tune top/width) */
+}
+/* gentle float — the two avatars bob in opposite phase (one rises while the other dips) */
+@keyframes ent-avatar-bob {
+  0%, 100% { transform: translateY(-7px) rotate(-4deg); }
+  50%      { transform: translateY(7px) rotate(4deg); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .ent-dialogue__avatar { animation: none; }
+}
+.ent-dialogue__bubble {
+  position: relative;
+  padding: 24px 28px;
+  max-width: 680px;                              /* keeps the speech bubble compact, not page-wide */
+  background: var(--ent-cream);
+  border: 2px solid var(--ent-ink);
+  border-radius: 22px;
+  font-size: clamp(15px, 1.2vw, 18px);
+  font-weight: 500;
+  line-height: 1.55;
+  color: var(--ent-ink);
+}
+.ent-dialogue__bubble::before {
+  content: "";
+  position: absolute;
+  left: -18px; top: 40%;
+  width: 20px; height: 20px;
+  background: var(--ent-cream);
+  border-left: 2px solid var(--ent-ink);
+  border-bottom: 2px solid var(--ent-ink);
+  transform: rotate(45deg);
+}
+.ent-dialogue__bubble strong { color: var(--ent-terra-deep); font-weight: 800; }
+
+@media (max-width: 720px) {
+  .ent-dialogue__panel { grid-template-columns: 1fr; }
+  .ent-dialogue__avatars { justify-content: center; }
+  .ent-dialogue__avatar { width: 140px; height: 140px; }
+  .ent-dialogue__bubble { max-width: none; }
+  .ent-dialogue__bubble::before {
+    left: 50%; top: -12px;
+    transform: translateX(-50%) rotate(135deg);
+  }
+}
+/* Narrow phones: shrink avatars + panel padding so the pair of heads
+   doesn't outgrow the container. Two 140px circles + 16px overlap = 264px
+   which exceeds the inner panel width at ≤400px. */
+@media (max-width: 480px) {
+  .ent-dialogue__panel  { padding: clamp(20px, 5vw, 32px); border-radius: 22px; box-shadow: 6px 6px 0 var(--ent-ink); }
+  .ent-dialogue__avatar { width: 96px; height: 96px; border-width: 2.5px; }
+  .ent-dialogue__avatar:nth-child(2) { margin-left: -12px; }
+  .ent-dialogue__bubble { padding: 18px 20px; font-size: 14.5px; }
+}
+
+/* ============================================================
+   HOME: ticker (friendly version)
+   ============================================================ */
+.ent-ticker {
+  padding: 12px 0;
+  background: var(--ent-ink);
+  color: var(--ent-cream-paper);
+  overflow: hidden;
+  border-top: 2px solid var(--ent-ink);
+  border-bottom: 2px solid var(--ent-ink);
+}
+.ent-ticker__track {
+  display: flex;
+  gap: 56px;
+  animation: ent-ticker 28s linear infinite;
+  width: max-content;
+  font-family: var(--a28-font-mono);
+  font-weight: var(--a28-w-medium);
+  font-size: 14px;
+  letter-spacing: var(--a28-track-eyebrow);
+  text-transform: uppercase;
+}
+.ent-ticker__item {
+  display: inline-flex; align-items: center; gap: 16px;
+}
+.ent-ticker__item::after {
+  content: "✦";
+  color: var(--ent-terra);
+  font-size: 14px;
+}
+@keyframes ent-ticker {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+
+/* ============================================================
+   HOME: trading-card "what we build"
+   ============================================================ */
+.ent-section {
+  position: relative;
+  padding: clamp(72px, 9vw, 144px) 0;
+}
+.ent-section--cream { background: var(--ent-cream); }
+.ent-section--mist  { background: var(--ent-mist); }
+
+/* When two same-bg sections sit back-to-back they read as one continuous
+   band, so the doubled padding between them feels excessive. Pull the
+   top of the second section in. */
+.ent-section--cream + .ent-section--cream,
+.ent-section--mist  + .ent-section--mist {
+  padding-top: clamp(28px, 4vw, 64px);
+}
+
+.ent-section-head {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(32px, 5vw, 80px);
+  align-items: end;
+  margin-bottom: clamp(40px, 5vw, 72px);
+}
+.ent-section-head__title {
+  margin: 12px 0 0;
+}
+.ent-section-head__side {
+  font-size: 17px;
+  font-weight: 500;
+  line-height: 1.55;
+  color: var(--ent-ink-soft);
+  max-width: 44ch;
+  justify-self: end;
+}
+@media (max-width: 760px) {
+  .ent-section-head { grid-template-columns: 1fr; align-items: start; gap: 16px; }
+  .ent-section-head__side { justify-self: start; }
+}
+
+/* HOME: "Why A28 Global Matters" — clean bento cards with the illustration on
+   top, then bold title, then secondary caption. Deliberately quieter than the
+   trading-card deck on section 03 (soft drop-shadow, no chunky offset border,
+   no per-card tint, no number tag) so this section reads as a calm "problems
+   we solve" counterpoint to the playful "what we build" deck right after. */
+.ent-reasons {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: clamp(18px, 1.8vw, 28px);
+  margin-top: clamp(40px, 4.5vw, 64px);
+  align-items: stretch;                              /* every card same height; even cards drop visually via `top` */
+  padding-bottom: clamp(150px, 16vw, 220px);         /* room for the dropped 2nd + 4th cards (matches their top offset) */
+}
+.ent-reason {
+  background: var(--ent-cream-paper);
+  border-radius: 24px;
+  overflow: hidden;                                  /* clip the flush image to the card's rounded corner */
+  box-shadow: 0 1px 0 rgba(61, 44, 32, 0.04),
+              0 14px 32px rgba(61, 44, 32, 0.08);
+  display: flex;
+  flex-direction: column;                            /* odd cards (1, 3) — image up top, copy below */
+  align-items: stretch;
+  transition: transform 360ms cubic-bezier(.23,1,.32,1), box-shadow 360ms ease;
+}
+.ent-reason:nth-child(even) {
+  flex-direction: column-reverse;                    /* even cards (2, 4) — copy on top, image dropped to bottom */
+  /* `position: relative + top` shifts the card visually without affecting its
+     layout height, so the grid still gives every card the same height —
+     cards 2 + 4 just hang lower than 1 + 3 to amplify the zigzag rhythm.
+     The shift is roughly the image height so card 2's text band aligns with
+     card 1's text band (and card 2's image with card 1's image). */
+  position: relative;
+  top: clamp(150px, 16vw, 220px);
+}
+.ent-reason:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 1px 0 rgba(61, 44, 32, 0.05),
+              0 22px 44px rgba(61, 44, 32, 0.12);
+}
+.ent-reason__visual {
+  flex: 0 0 auto;
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  background: rgba(247, 224, 208, 0.5);
+  position: relative;                                 /* anchor for the hover color wash overlay */
+}
+.ent-reason__visual img {
+  width: 100%; height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 600ms cubic-bezier(.23, 1, .32, 1);
+}
+/* Hover treatment, layer 1 of 3 — image zooms slightly inside the rounded
+   clip. Soft + slow so it reads as breathing, not lurching. */
+.ent-reason:hover .ent-reason__visual img,
+.ent-reason:focus-within .ent-reason__visual img {
+  transform: scale(1.06);
+}
+/* Layer 2 of 3 — warm peach → terra gradient fades over the image, like
+   stage lighting on the illustration. Pairs with the marker-highlight on
+   the title below for a coordinated emphasis. */
+.ent-reason__visual::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(155deg,
+    rgba(247, 224, 208, 0)   0%,
+    rgba(177, 78,  46, 0.22) 100%);
+  opacity: 0;
+  transition: opacity 500ms cubic-bezier(.23, 1, .32, 1);
+  pointer-events: none;
+}
+.ent-reason:hover .ent-reason__visual::after,
+.ent-reason:focus-within .ent-reason__visual::after {
+  opacity: 1;
+}
+.ent-reason__copy {
+  flex: 1;                                           /* fills the remaining card height so all cards line up */
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 10px;
+  padding: clamp(20px, 1.8vw, 28px);
+}
+.ent-reason__title {
+  margin: 0;
+  font-family: var(--a28-font-display);
+  font-weight: var(--a28-w-regular);
+  font-size: clamp(20px, 1.9vw, 26px);
+  letter-spacing: var(--a28-track-display);
+  line-height: 1.18;
+  color: var(--ent-ink);
+  /* Layer 3 of 3 — marker-highlight sweep. inline-block + align-self keep
+     the gradient sized to the text rather than the column width, so the
+     bg-size animation reads as a horizontal swipe across the title. */
+  display: inline-block;
+  align-self: flex-start;
+  background-image: linear-gradient(120deg, var(--ent-peach), var(--ent-peach));
+  background-repeat: no-repeat;
+  background-position: 0 88%;
+  background-size: 0% 34%;
+  transition: background-size 520ms cubic-bezier(.23, 1, .32, 1);
+}
+.ent-reason:hover .ent-reason__title,
+.ent-reason:focus-within .ent-reason__title {
+  background-size: 100% 34%;
+}
+.ent-reason__body {
+  margin: 0;
+  font-size: clamp(14px, 1.1vw, 16px);
+  line-height: 1.5;
+  color: var(--ent-ink-soft);
+}
+/* Tablet: drop from 4 columns to 2 columns. The vertical zigzag offset would
+   make the top row crash into the bottom row, so reset `top` here and clear
+   the matching bottom padding. Column-reverse alternation stays. */
+@media (max-width: 1020px) {
+  .ent-reasons {
+    grid-template-columns: repeat(2, 1fr);
+    padding-bottom: 0;
+  }
+  .ent-reason:nth-child(even) { top: 0; }
+}
+/* Mobile: single column. Cancel the column-reverse so every card reads the
+   same way (image on top, copy below) on narrow screens. */
+@media (max-width: 600px) {
+  .ent-reasons {
+    grid-template-columns: 1fr;
+    max-width: 460px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .ent-reason,
+  .ent-reason:nth-child(even) {
+    flex-direction: column;
+    top: 0;
+  }
+}
+
+/* Reduced motion: drop the hover zoom + bg sweep, keep the overlay as a
+   flat opacity swap (still useful for emphasis, just no animation). */
+@media (prefers-reduced-motion: reduce) {
+  .ent-reason__visual img,
+  .ent-reason__visual::after,
+  .ent-reason__title {
+    transition: none;
+  }
+  .ent-reason:hover .ent-reason__visual img { transform: none; }
+  .ent-reason:hover .ent-reason__title { background-size: 100% 34%; }
+}
+
+.ent-deck {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+}
+@media (max-width: 1020px) { .ent-deck { grid-template-columns: repeat(2, 1fr); gap: 20px; } }
+@media (max-width: 600px)  { .ent-deck { grid-template-columns: 1fr; max-width: 460px; margin-left: auto; margin-right: auto; } }
+
+/* 3.3 item 5: ent "What We Build" cards are now deep-links to capabilities.html.
+   Kill default link styling; give a clear keyboard focus ring. */
+a.ent-card { text-decoration: none; color: inherit; }
+a.ent-card:focus-visible {
+  outline: 2px solid var(--ent-ink);
+  outline-offset: 3px;
+}
+.ent-card {
+  position: relative;
+  background: var(--ent-cream-paper);
+  border: 2.5px solid var(--ent-ink);
+  border-radius: 24px;
+  padding: 28px 24px 24px;
+  box-shadow: var(--ent-shadow-card);
+  transition: transform 320ms cubic-bezier(.34,1.56,.64,1),
+              box-shadow 320ms ease;
+  overflow: hidden;
+}
+@media (hover: hover) {
+  .ent-card:hover {
+    transform: translateY(-6px) rotate(-1deg);
+    box-shadow: var(--ent-shadow-pop);
+  }
+}
+.ent-card:nth-child(2n) {
+  background: var(--ent-mist);
+}
+.ent-card:nth-child(4n) {
+  background: var(--ent-peach);
+}
+.ent-card__no {
+  font-family: var(--a28-font-mono);
+  font-size: 12px;
+  font-weight: var(--a28-w-medium);
+  letter-spacing: var(--a28-track-eyebrow);
+  color: var(--ent-ink-soft);
+}
+.ent-card__icon {
+  width: 64px; height: 64px;
+  border-radius: 50%;
+  background: var(--ent-cream);
+  border: 2px solid var(--ent-ink);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 16px;
+}
+.ent-card__icon .material-symbols-outlined {
+  font-size: 32px;
+  color: var(--ent-terra-deep);
+}
+.ent-card__title {
+  margin: 18px 0 12px;
+  font-family: var(--a28-font-display);
+  font-weight: var(--a28-w-regular);
+  font-size: 24px;
+  letter-spacing: var(--a28-track-display);
+  line-height: 1.15;
+  color: var(--ent-ink);
+}
+/* Highlight the leading "A" of each "What we build" card title */
+.ent-card__title::first-letter {
+  color: var(--ent-terra-deep);
+}
+.ent-card__body {
+  margin: 0;
+  font-size: 14.5px;
+  line-height: 1.55;
+  color: var(--ent-ink-soft);
+}
+.ent-card__corner {
+  position: absolute;
+  top: 18px; right: 18px;
+}
+
+/* Hover / focus / tap reveal — a themed photo overlay fills the card */
+.ent-card__overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 5;
+  opacity: 0;
+  transform: translateY(10px);
+  pointer-events: none;
+  transition: opacity 320ms ease, transform 320ms cubic-bezier(.34,1.56,.64,1);
+}
+.ent-card__overlay img {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  width: 100%; height: 100%;
+  object-fit: cover;
+}
+.ent-card__overlay::before {        /* warm brand tint (color treatment) */
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background: var(--ent-terra);
+  mix-blend-mode: multiply;
+  opacity: 0.32;
+}
+.ent-card__overlay::after {         /* legibility gradient for the label */
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  background: linear-gradient(to top, rgba(61,44,32,0.92), rgba(61,44,32,0.12) 58%, transparent);
+}
+.ent-card__overlay-label {
+  position: absolute;
+  z-index: 3;
+  left: 20px; right: 20px; bottom: 18px;
+  font-family: var(--a28-font-display);
+  font-weight: var(--a28-w-regular);
+  font-size: 22px;
+  letter-spacing: var(--a28-track-display);
+  line-height: 1.2;
+  color: #fff;
+}
+.ent-card:focus-visible .ent-card__overlay,
+.ent-card.is-active .ent-card__overlay {
+  opacity: 1;
+  transform: translateY(0);
+}
+/* Hover only on pointer devices — on touch the JS toggle is the sole
+   activator, so a second tap properly closes the overlay instead of
+   getting stuck on a sticky :hover. */
+@media (hover: hover) {
+  .ent-card:hover .ent-card__overlay {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.ent-card:focus-visible {
+  outline: 3px solid var(--ent-terra-deep);
+  outline-offset: 3px;
+}
+@media (prefers-reduced-motion: reduce) {
+  .ent-card__overlay { transition: opacity 200ms ease; transform: none; }
+}
+
+/* ============================================================
+   HOME: enterprise particle sphere — "How We Get It Done"
+   Two-column stage: LEFT = section copy (tag / heading / desc /
+   drag hint). RIGHT = particle sphere with floating step card that
+   tethers to whichever numbered node is currently front-facing.
+   Cards live inside the orb and snap-translate to the node's last
+   screen position when activated, then cross-fade in place.
+   See site.js → "Enterprise sphere" for the renderer + a11y wiring.
+   ============================================================ */
+.ent-sphere-stage {
+  position: relative;
+  margin-top: clamp(36px, 4vw, 60px);
+  display: grid;
+  grid-template-columns: minmax(0, 2fr) minmax(0, 3fr);
+  gap: clamp(28px, 4vw, 64px);
+  padding: clamp(28px, 3.5vw, 56px);
+  border: 2.5px solid var(--ent-ink);
+  border-radius: 32px;
+  box-shadow: 10px 10px 0 var(--ent-ink);
+  background:
+    radial-gradient(ellipse at 72% 42%, rgba(247,224,208,0.6) 0%, transparent 60%),
+    linear-gradient(180deg, var(--ent-cream-paper) 0%, var(--ent-mist) 100%);
+  align-items: stretch;
+}
+
+/* ---- Left column: tag + heading + description + hint ---- */
+.ent-sphere-intro {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(14px, 1.4vw, 22px);
+  padding-top: clamp(8px, 1.6vw, 28px);
+}
+.ent-sphere-intro .ent-eyebrow { color: var(--ent-terra-deep); }
+.ent-sphere-intro__title {
+  margin: 0;
+  color: var(--ent-ink);
+}
+.ent-sphere-intro__desc {
+  margin: 0;
+  max-width: 38ch;
+  font-size: clamp(15px, 1.05vw, 17px);
+  line-height: 1.65;
+  color: var(--ent-ink-soft);
+}
+.ent-sphere-hint {
+  align-self: flex-start;
+  margin: 6px 0 0;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 14px;
+  background: var(--ent-cream-paper);
+  border: 2px solid var(--ent-ink);
+  border-radius: 999px;
+  box-shadow: 3px 3px 0 var(--ent-ink);
+  font-family: var(--a28-font-mono);
+  font-size: 10.5px;
+  font-weight: var(--a28-w-medium);
+  letter-spacing: var(--a28-track-eyebrow);
+  text-transform: uppercase;
+  color: var(--ent-ink);
+  transition: opacity 280ms ease, transform 280ms ease;
+}
+.ent-sphere-hint .material-symbols-outlined { font-size: 14px; }
+.ent-sphere-hint.is-hidden {
+  opacity: 0;
+  transform: translateY(6px);
+}
+
+/* ---- Right column: sphere + floating card overlay ---- */
+.ent-sphere-area {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 0;
+}
+.ent-sphere-orb {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  max-width: clamp(300px, 40vw, 540px);
+  margin-inline: auto;
+}
+.ent-sphere-canvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  display: block;
+  cursor: grab;
+  touch-action: pan-y;
+}
+.ent-sphere-canvas:active { cursor: grabbing; }
+
+/* ---- Invisible focusable nodes, one per marker. JS sets --node-x /
+   --node-y in canvas-space pixels each frame. Hit-target sits over
+   the drawn dot; focus-visible exposes a dashed ring for keyboard. ---- */
+.ent-sphere-nodes {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+.ent-sphere-node {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 36px;
+  height: 36px;
+  padding: 0;
+  margin: 0;
+  border: 0;
+  border-radius: 999px;
+  background: transparent;
+  color: transparent;
+  cursor: pointer;
+  pointer-events: auto;
+  transform: translate(var(--node-x, 0), var(--node-y, 0)) translate(-50%, -50%);
+  transition: opacity 180ms ease;
+}
+.ent-sphere-node:focus-visible {
+  outline: 2px dashed var(--ent-ink);
+  outline-offset: 4px;
+}
+.ent-sphere-node.is-behind {
+  pointer-events: none;
+  opacity: 0;
+}
+
+/* ---- Carousel-style numbered pager. Sits at the bottom of the orb
+   on desktop (absolute, centered) and in normal flow between sphere
+   and card on mobile. Reuses snapToStep() — easier tap targets than
+   the on-sphere markers. ---- */
+.ent-sphere-dots {
+  position: absolute;
+  left: 50%;
+  bottom: 8px;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 10px;
+  padding: 0;
+  margin: 0;
+  z-index: 2;
+}
+.ent-sphere-dot {
+  width: 32px;
+  height: 32px;
+  padding: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--ent-cream-paper);
+  border: 2px solid var(--ent-ink);
+  border-radius: 999px;
+  box-shadow: 3px 3px 0 var(--ent-ink);
+  font-family: var(--a28-font-mono);
+  font-size: 13px;
+  font-weight: var(--a28-w-medium);
+  color: var(--ent-ink);
+  cursor: pointer;
+  transition: background 180ms ease, color 180ms ease,
+              transform 120ms ease, box-shadow 120ms ease;
+}
+.ent-sphere-dot:hover {
+  transform: translate(-1px, -1px);
+  box-shadow: 4px 4px 0 var(--ent-ink);
+}
+.ent-sphere-dot:active {
+  transform: translate(2px, 2px);
+  box-shadow: 1px 1px 0 var(--ent-ink);
+}
+.ent-sphere-dot.is-active {
+  background: var(--ent-terra-deep);
+  color: var(--ent-cream-paper);
+}
+.ent-sphere-dot:focus-visible {
+  outline: 2px dashed var(--ent-ink);
+  outline-offset: 3px;
+}
+
+/* ---- Floating cards. Each card has its own --card-x / --card-y
+   (canvas-space px) that JS snapshots when the card becomes active.
+   The fixed (72px, -50%) translate offsets the card to the right of
+   the node and centers it vertically. Inactive cards stay frozen at
+   their last position while fading out — no jump on swap. ---- */
+.ent-sphere-cards {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+.ent-sphere-card {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: clamp(190px, 19vw, 250px);
+  display: flex;
+  flex-direction: column;
+  padding: clamp(14px, 1.4vw, 20px) clamp(16px, 1.6vw, 22px);
+  background: var(--ent-cream-paper);
+  border: 2.5px solid var(--ent-ink);
+  border-radius: 20px;
+  box-shadow: 6px 6px 0 var(--ent-ink);
+  opacity: 0;
+  --card-x: 50%;
+  --card-y: 50%;
+  /* Anchor to the active node's screen position, then offset right +
+     slightly down so the card visually "tethers" to the front number. */
+  transform: translate(var(--card-x), var(--card-y)) translate(36px, -42%);
+  transition: opacity 200ms ease;
+  pointer-events: none;
+}
+.ent-sphere-card.is-active {
+  opacity: 1;
+  pointer-events: auto;
+  transition: opacity 220ms ease 60ms;
+}
+.ent-sphere-card[data-step="0"] { --sphere-accent: var(--ent-terra); }
+.ent-sphere-card[data-step="1"] { --sphere-accent: var(--ent-sky);   }
+.ent-sphere-card[data-step="2"] { --sphere-accent: var(--ent-sage);  }
+.ent-sphere-card[data-step="3"] { --sphere-accent: var(--ent-blush); }
+.ent-sphere-card::before {
+  content: '';
+  position: absolute;
+  top: -2px;
+  left: 24px;
+  width: 48px;
+  height: 8px;
+  background: var(--sphere-accent);
+  border: 2px solid var(--ent-ink);
+  border-top: none;
+  border-radius: 0 0 8px 8px;
+}
+.ent-sphere-card__chip {
+  display: inline-block;
+  margin-bottom: 10px;
+  align-self: flex-start;
+  padding: 4px 12px;
+  background: var(--sphere-accent);
+  border: 1.5px solid var(--ent-ink);
+  border-radius: 999px;
+  font-family: var(--a28-font-mono);
+  font-size: 10.5px;
+  font-weight: var(--a28-w-medium);
+  letter-spacing: var(--a28-track-eyebrow);
+  text-transform: uppercase;
+  color: var(--ent-ink);
+}
+.ent-sphere-card__title {
+  margin: 0 0 8px;
+  font-family: var(--a28-font-display);
+  font-weight: var(--a28-w-regular);
+  font-size: clamp(20px, 1.7vw, 26px);
+  letter-spacing: var(--a28-track-display);
+  line-height: 1.1;
+  color: var(--ent-ink);
+}
+.ent-sphere-card p {
+  margin: 0;
+  font-size: clamp(13.5px, 0.95vw, 15px);
+  line-height: 1.55;
+  color: var(--ent-ink-soft);
+}
+
+/* ---- SR fallback list. Visually hidden by default (kept in the
+   accessibility tree so screen-reader users always have the full
+   step copy). When prefers-reduced-motion is on, the list is shown
+   styled as the visual fallback. ---- */
+.ent-sphere-fallback {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  /* visually hidden, SR readable */
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* ---- aria-live region: visually hidden ---- */
+.ent-sphere-live {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* ---- Mobile + small laptop: stack vertically. The orb drops its 1:1
+   aspect (canvas gets an explicit height; cards flow into the bottom of
+   the orb). Card position becomes flow-based instead of canvas-anchored —
+   active-card content swaps, not its location. Stacks at 1080px so the
+   floating card never overflows the rounded panel on 1024px tablets. ---- */
+@media (max-width: 1080px) {
+  .ent-sphere-stage {
+    grid-template-columns: 1fr;
+    gap: clamp(20px, 4vw, 32px);
+    padding: clamp(22px, 4vw, 36px);
+  }
+  .ent-sphere-intro { padding-top: 0; }
+  .ent-sphere-area { width: 100%; }
+  .ent-sphere-orb {
+    aspect-ratio: auto;
+    max-width: 100%;
+    max-height: none;
+  }
+  .ent-sphere-canvas {
+    position: relative;
+    inset: auto;
+    width: 100%;
+    height: clamp(280px, 68vw, 420px);
+  }
+  /* Node hit-targets stay overlaid on the canvas (top of the orb). */
+  .ent-sphere-nodes {
+    height: clamp(280px, 68vw, 420px);
+    bottom: auto;
+  }
+  /* Dots drop out of absolute positioning to sit between sphere + card. */
+  .ent-sphere-dots {
+    position: relative;
+    left: auto;
+    bottom: auto;
+    transform: none;
+    margin: 14px auto 0;
+    justify-content: center;
+  }
+  .ent-sphere-cards {
+    position: relative;
+    inset: auto;
+    display: grid;
+    grid-template-columns: 1fr;
+    width: 100%;
+    margin-top: clamp(16px, 4vw, 24px);
+    min-height: 0;
+  }
+  /* Stack all cards into the same grid cell so the container heights
+     auto-fit to content (no forced min-height = no empty card space). */
+  .ent-sphere-card {
+    position: relative;
+    inset: auto;
+    grid-column: 1;
+    grid-row: 1;
+    width: 100%;
+    transform: none;
+  }
+  .ent-sphere-card.is-active { transform: none; }
+}
+
+/* ---- Reduced-motion: hide canvas + interactive layer, reveal the
+   fallback list with full styling. ---- */
+@media (prefers-reduced-motion: reduce) {
+  .ent-sphere-stage {
+    grid-template-columns: 1fr;
+  }
+  .ent-sphere-area,
+  .ent-sphere-hint { display: none; }
+  .ent-sphere-fallback {
+    position: static;
+    width: auto;
+    height: auto;
+    overflow: visible;
+    clip: auto;
+    white-space: normal;
+    margin: 8px 0 0;
+    display: block;
+    grid-column: 1 / -1;
+  }
+  .ent-sphere-fallback li {
+    margin-bottom: 14px;
+    padding: 14px 18px;
+    background: var(--ent-cream-paper);
+    border: 2px solid var(--ent-ink);
+    border-radius: 16px;
+    box-shadow: 4px 4px 0 var(--ent-ink);
+    color: var(--ent-ink-soft);
+    font-size: 15px;
+    line-height: 1.6;
+  }
+  .ent-sphere-fallback li strong {
+    display: block;
+    margin-bottom: 4px;
+    font-family: var(--a28-font-mono);
+    font-size: 11px;
+    font-weight: var(--a28-w-medium);
+    text-transform: uppercase;
+    letter-spacing: var(--a28-track-eyebrow);
+    color: var(--ent-terra-deep);
+  }
+}
+
+/* ============================================================
+   HOME: spinnable toy block "how we deliver"
+   ============================================================ */
+.ent-cube-stage {
+  margin-top: 44px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 26px;
+}
+.ent-cube-viewport {
+  position: relative;
+  width: 100%;
+  min-height: clamp(420px, 52vh, 560px);
+  display: grid;
+  place-items: center;
+  perspective: 1100px;
+  cursor: grab;
+  touch-action: none;
+  user-select: none;
+  -webkit-user-select: none;
+}
+.ent-cube-viewport:active { cursor: grabbing; }
+.ent-cube-viewport::after {            /* soft ground shadow under the block */
+  content: "";
+  position: absolute;
+  left: 50%; bottom: 16%;
+  width: min(56%, 320px);
+  height: 38px;
+  transform: translateX(-50%);
+  border-radius: 50%;
+  background: radial-gradient(ellipse at center, rgba(61,44,32,0.26), transparent 70%);
+  filter: blur(9px);
+  pointer-events: none;
+}
+
+.ent-cube {
+  --cube-size: clamp(260px, 40vw, 340px);
+  --cube-rx: -16deg;
+  --cube-ry: -28deg;
+  position: relative;
+  z-index: 1;
+  width: var(--cube-size);
+  height: var(--cube-size);
+  transform-style: preserve-3d;
+  transform: rotateX(var(--cube-rx)) rotateY(var(--cube-ry));
+}
+.ent-cube__face {
+  position: absolute;
+  inset: 0;
+  border: 2.5px solid var(--ent-ink);
+  border-radius: 16px;
+  background: var(--ent-cream-paper);
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  overflow: hidden;
+}
+.ent-cube__face--front  { transform: rotateY(0deg)    translateZ(calc(var(--cube-size) / 2)); }
+.ent-cube__face--right  { transform: rotateY(90deg)   translateZ(calc(var(--cube-size) / 2)); }
+.ent-cube__face--back   { transform: rotateY(180deg)  translateZ(calc(var(--cube-size) / 2)); }
+.ent-cube__face--left   { transform: rotateY(-90deg)  translateZ(calc(var(--cube-size) / 2)); }
+.ent-cube__face--top    { transform: rotateX(90deg)   translateZ(calc(var(--cube-size) / 2)); }
+.ent-cube__face--bottom { transform: rotateX(-90deg)  translateZ(calc(var(--cube-size) / 2)); }
+
+.ent-cube__step {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 14px;
+  padding: 28px 26px;
+  text-align: left;
+  background: color-mix(in srgb, var(--face-accent, var(--ent-terra)) 12%, var(--ent-cream-paper));
+}
+.ent-cube__step--terra { --face-accent: var(--ent-terra); }
+.ent-cube__step--sky   { --face-accent: var(--ent-sky); }
+.ent-cube__step--sage  { --face-accent: var(--ent-sage); }
+.ent-cube__step--blush { --face-accent: var(--ent-blush); }
+
+.ent-cube__num {
+  width: 46px; height: 46px;
+  border-radius: 13px;
+  background: var(--face-accent, var(--ent-terra));
+  color: #fff;
+  font-family: var(--a28-font-display);
+  font-weight: var(--a28-w-regular);
+  font-size: 24px;
+  display: inline-flex; align-items: center; justify-content: center;
+  border: 2px solid var(--ent-ink);
+  box-shadow: 3px 3px 0 var(--ent-ink);
+  transform: rotate(-5deg);
+}
+.ent-cube__step--blush .ent-cube__num { color: var(--ent-ink); }
+.ent-cube__title {
+  margin: 0;
+  font-family: var(--a28-font-display);
+  font-weight: var(--a28-w-regular);
+  font-size: clamp(20px, 2.2vw, 24px);
+  letter-spacing: var(--a28-track-display);
+  line-height: 1.12;
+  color: var(--ent-ink);
+}
+.ent-cube__body {
+  margin: 0;
+  font-size: 13.5px;
+  line-height: 1.5;
+  color: var(--ent-ink-soft);
+}
+
+.ent-cube__face--top {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  background: var(--ent-mist);
+}
+.ent-cube__spin-icon {
+  font-size: 52px;
+  color: var(--ent-terra-deep);
+  animation: entCubeSpinIcon 6s linear infinite;
+}
+.ent-cube__spin-label {
+  font-family: var(--a28-font-display);
+  font-weight: var(--a28-w-regular);
+  font-size: 28px;
+  letter-spacing: var(--a28-track-display);
+  line-height: 1;
+  color: var(--ent-ink);
+}
+@keyframes entCubeSpinIcon { to { transform: rotate(360deg); } }
+.ent-cube__face--bottom {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--ent-terra);
+}
+.ent-cube__brand {
+  font-family: var(--a28-font-display);
+  font-weight: var(--a28-w-regular);
+  font-size: 48px;
+  letter-spacing: var(--a28-track-display);
+  color: #fff;
+}
+
+.ent-cube__hint {
+  position: absolute;
+  left: 50%; bottom: 12px;
+  transform: translateX(-50%);
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin: 0;
+  font-family: var(--a28-font-mono);
+  font-weight: var(--a28-w-medium);
+  font-size: 12px;
+  letter-spacing: var(--a28-track-eyebrow);
+  text-transform: uppercase;
+  color: var(--ent-ink-soft);
+  pointer-events: none;
+  transition: opacity 0.35s var(--a28-ease-out, ease);
+}
+.ent-cube__hint .material-symbols-outlined { font-size: 16px; }
+.ent-cube__hint.is-hidden { opacity: 0; }
+
+.ent-cube__dots {
+  display: flex;
+  gap: 12px;
+}
+.ent-cube__dot {
+  width: 13px; height: 13px;
+  padding: 0;
+  border-radius: 50%;
+  border: 2px solid var(--ent-ink);
+  background: transparent;
+  cursor: pointer;
+  transition: transform 0.2s var(--a28-ease-out, ease), background 0.2s var(--a28-ease-out, ease);
+}
+.ent-cube__dot:hover { transform: scale(1.18); background: var(--ent-mist); }
+.ent-cube__dot:focus-visible { outline: 2px solid var(--ent-terra); outline-offset: 3px; }
+.ent-cube__dot:active { transform: scale(0.9); }
+.ent-cube__dot.is-active { background: var(--ent-terra); border-color: var(--ent-terra); }
+
+@media (max-width: 600px) {
+  .ent-cube { --cube-size: clamp(248px, 76vw, 300px); }
+  .ent-cube-viewport { min-height: clamp(380px, 60vh, 460px); }
+  .ent-cube__step { padding: 22px 20px; gap: 12px; }
+  .ent-cube__body { font-size: 13px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .ent-cube__spin-icon { animation: none; }
+}
+
+/* ============================================================
+   HOME / WORK: polaroid case studies
+   ============================================================ */
+.ent-polaroids {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 36px;
+  padding-top: 16px;
+}
+@media (max-width: 900px) { .ent-polaroids { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 600px) {
+  .ent-polaroids { grid-template-columns: 1fr; max-width: 360px; margin: 0 auto; }
+  /* Reset per-item rotation + offset so stacked polaroids don't poke past the column. */
+  .ent-polaroid,
+  .ent-polaroid:nth-child(1),
+  .ent-polaroid:nth-child(2),
+  .ent-polaroid:nth-child(3) { transform: none; margin-top: 0; }
+}
+
+.ent-polaroid {
+  position: relative;
+  background: #fff;
+  border: 1px solid var(--ent-ink);
+  padding: 16px 16px 28px;
+  box-shadow: var(--ent-shadow-card);
+  text-decoration: none;
+  color: var(--ent-ink);
+  transition: transform 380ms cubic-bezier(.34,1.56,.64,1),
+              box-shadow 380ms ease;
+  display: block;
+}
+.ent-polaroid:nth-child(1) { transform: rotate(-2.2deg); }
+.ent-polaroid:nth-child(2) { transform: rotate(1.4deg); margin-top: 28px; }
+.ent-polaroid:nth-child(3) { transform: rotate(-1deg); margin-top: 14px; }
+.ent-polaroid:hover {
+  transform: rotate(0) translateY(-8px);
+  box-shadow: var(--ent-shadow-pop);
+  z-index: 2;
+}
+.ent-polaroid:focus-visible {
+  transform: rotate(0) translateY(-8px);
+  box-shadow: var(--ent-shadow-pop);
+  z-index: 2;
+  outline: 3px solid var(--ent-terra-deep);
+  outline-offset: 4px;
+}
+.ent-polaroid__img {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  background: var(--ent-peach);
+  display: block;
+}
+.ent-polaroid__caption {
+  margin-top: 14px;
+  font-family: var(--a28-font-display);
+  font-weight: var(--a28-w-regular);
+  font-size: 22px;
+  letter-spacing: var(--a28-track-display);
+  line-height: 1.2;
+  color: var(--ent-ink);
+  text-align: center;
+}
+.ent-polaroid__caption small {
+  display: block;
+  font-family: var(--a28-font-mono);
+  font-size: 11px;
+  font-weight: var(--a28-w-medium);
+  letter-spacing: var(--a28-track-eyebrow);
+  text-transform: uppercase;
+  color: var(--ent-ink-soft);
+  margin-top: 6px;
+}
+.ent-polaroid__tape {
+  position: absolute;
+  top: -14px; left: 50%;
+  transform: translateX(-50%) rotate(2deg);
+  width: 96px; height: 22px;
+  background: rgba(217, 178, 122, 0.65);
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+/* ============================================================
+   HOME: who-we-work-with — index-card crew board
+   2x2 grid of "partner cards" with colored top tab, number badge,
+   audience title, tagline, and body copy. Distinct from the trading
+   cards (no overlay), bento reasons (no image), and polaroids (no tape):
+   this section reads like a Rolodex of who we partner with.
+   ============================================================ */
+.ent-partners {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: clamp(28px, 3.4vw, 56px);
+  margin-top: clamp(40px, 4.5vw, 64px);
+  padding: clamp(8px, 1vw, 16px) 0 clamp(16px, 2vw, 28px);
+}
+@media (max-width: 720px) {
+  .ent-partners {
+    grid-template-columns: 1fr;
+    gap: 36px;
+    max-width: 460px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+
+.ent-partner {
+  --tab-color: var(--ent-terra);
+  --tab-ink: #fff;
+  position: relative;
+  background: var(--ent-cream-paper);
+  border: 2.5px solid var(--ent-ink);
+  border-radius: 20px;
+  box-shadow: 6px 6px 0 var(--ent-ink);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  transition: transform 320ms cubic-bezier(.34,1.56,.64,1),
+              box-shadow 320ms ease;
+}
+.ent-partner:nth-child(1) { transform: rotate(-0.6deg); }
+.ent-partner:nth-child(2) { transform: rotate(0.5deg); }
+.ent-partner:nth-child(3) { transform: rotate(0.4deg); }
+.ent-partner:nth-child(4) { transform: rotate(-0.5deg); }
+.ent-partner:hover {
+  transform: translate(-3px, -5px) rotate(0deg);
+  box-shadow: 10px 10px 0 var(--ent-ink);
+}
+
+.ent-partner--terra { --tab-color: var(--ent-terra); --tab-ink: #fff; }
+.ent-partner--sky   { --tab-color: var(--ent-sky);   --tab-ink: #fff; }
+.ent-partner--sage  { --tab-color: var(--ent-sage);  --tab-ink: #fff; }
+.ent-partner--blush { --tab-color: var(--ent-blush); --tab-ink: var(--ent-ink); }
+
+.ent-partner__tab {
+  background: var(--tab-color);
+  color: var(--tab-ink);
+  border-bottom: 2.5px solid var(--ent-ink);
+  padding: 14px 22px;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  font-family: var(--a28-font-mono);
+  font-weight: var(--a28-w-medium);
+  font-size: 12px;
+  letter-spacing: var(--a28-track-eyebrow);
+  text-transform: uppercase;
+}
+.ent-partner__num {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 30px; height: 30px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.88);
+  color: var(--ent-ink);
+  font-size: 12px;
+  border: 1.5px solid var(--ent-ink);
+  flex-shrink: 0;
+}
+.ent-partner--blush .ent-partner__num { background: #fff; }
+.ent-partner__cat {
+  flex: 1;
+  line-height: 1;
+}
+
+.ent-partner__body {
+  padding: clamp(22px, 2.6vw, 32px);
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  flex: 1;
+}
+.ent-partner__title {
+  margin: 0;
+  font-family: var(--a28-font-display);
+  font-weight: var(--a28-w-regular);
+  font-size: clamp(22px, 2vw, 28px);
+  letter-spacing: var(--a28-track-display);
+  line-height: 1.15;
+  color: var(--ent-ink);
+}
+.ent-partner__tag {
+  margin: 0;
+  padding-bottom: 14px;
+  border-bottom: 1.5px dashed var(--ent-ink);
+  font-family: var(--a28-font-mono);
+  font-weight: var(--a28-w-medium);
+  font-size: 12px;
+  letter-spacing: var(--a28-track-eyebrow);
+  text-transform: uppercase;
+  color: var(--tab-color);
+}
+/* blush tab is too pale for the tagline text — fall back to ink-deep terra */
+.ent-partner--blush .ent-partner__tag { color: var(--ent-terra-deep); }
+.ent-partner__copy {
+  margin: 0;
+  font-size: 15px;
+  line-height: 1.6;
+  color: var(--ent-ink-soft);
+}
+
+/* ---- Rubber-stamp seal (hover reveal) ----
+   Sits in the bottom-right corner of each card. Scaled to zero by
+   default — pops in on hover with a slight back-out spring. Colors
+   pulled from the card's tab palette so the stamp reads as part of
+   the same system. */
+.ent-partner__seal {
+  position: absolute;
+  bottom: clamp(14px, 1.5vw, 22px);
+  right:  clamp(14px, 1.5vw, 22px);
+  width:  clamp(58px, 5.4vw, 78px);
+  height: clamp(58px, 5.4vw, 78px);
+  border-radius: 50%;
+  background: var(--tab-color);
+  color: var(--tab-ink);
+  border: 2.5px solid var(--ent-ink);
+  box-shadow: 3px 3px 0 var(--ent-ink);
+  display: grid;
+  place-items: center;
+  font-family: var(--a28-font-mono);
+  font-weight: var(--a28-w-semibold);
+  font-size: clamp(11px, 1vw, 14px);
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  line-height: 1;
+  transform: scale(0) rotate(-14deg);
+  transform-origin: 50% 50%;
+  transition: transform 420ms cubic-bezier(.34, 1.56, .64, 1);
+  pointer-events: none;
+  z-index: 4;
+}
+.ent-partner:hover .ent-partner__seal,
+.ent-partner:focus-within .ent-partner__seal {
+  transform: scale(1) rotate(-14deg);
+}
+
+/* ---- Number badge "ping" on hover ----
+   Quick pulse on the round 01/02/03/04 chip — small extra signal that
+   the card is alive. Runs once per hover-enter. */
+@keyframes ent-partner-num-ping {
+  0%   { transform: scale(1); }
+  40%  { transform: scale(1.18); }
+  100% { transform: scale(1); }
+}
+.ent-partner:hover .ent-partner__num,
+.ent-partner:focus-within .ent-partner__num {
+  animation: ent-partner-num-ping 600ms ease-out;
+}
+
+/* 3D context for cursor-follow tilt (JS sets inline rotateX/Y on hover) */
+.ent-partners { perspective: 900px; }
+
+@media (prefers-reduced-motion: reduce) {
+  .ent-partner,
+  .ent-partner:hover { transform: none; transition: box-shadow 200ms ease; }
+  .ent-partner__seal { transition: opacity 200ms ease; transform: scale(0) rotate(-14deg); }
+  .ent-partner:hover .ent-partner__seal { transform: scale(1) rotate(-14deg); }
+  .ent-partner:hover .ent-partner__num { animation: none; }
+}
+
+/* ============================================================
+   HOME: big CTA
+   ============================================================ */
+.ent-bigcta {
+  padding: clamp(80px, 10vw, 160px) 0;
+  position: relative;
+}
+/* Home-only: bridge the mist of section 6 into the page bg and match
+   the CTA→footer spacing the other pages already have. Scoped via the
+   id so capabilities / about / case-studies CTAs stay untouched. */
+#ent-cta.ent-bigcta {
+  background: linear-gradient(180deg,
+    var(--ent-mist) 0%,
+    var(--ent-mist) 8%,
+    var(--a28-bone) 42%,
+    var(--a28-bone) 100%);
+}
+.ent-bigcta__panel {
+  position: relative;
+  background: var(--ent-terra);
+  border: 3px solid var(--ent-ink);
+  border-radius: 32px;
+  padding: clamp(40px, 6vw, 96px) clamp(28px, 4vw, 64px);
+  box-shadow: 10px 10px 0 var(--ent-ink);
+  color: #fff;
+  text-align: center;
+  overflow: hidden;
+}
+.ent-bigcta__panel::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(circle at 12% 16%, rgba(255,255,255,0.18), transparent 32%),
+    radial-gradient(circle at 88% 84%, rgba(0,0,0,0.16),     transparent 38%);
+  pointer-events: none;
+}
+.ent-bigcta__title {
+  position: relative;
+  margin: 0;
+  font-family: var(--a28-font-display);
+  font-weight: var(--a28-w-regular);
+  letter-spacing: var(--a28-track-display);
+  line-height: 0.96;
+  font-size: clamp(40px, 6vw, 88px);
+  color: #fff;
+}
+.ent-bigcta__sub {
+  position: relative;
+  margin: 20px auto 36px;
+  font-size: clamp(17px, 1.4vw, 22px);
+  font-weight: 500;
+  color: rgba(255,255,255,0.86);
+  max-width: 48ch;
+  line-height: 1.5;
+}
+.ent-bigcta__actions {
+  position: relative;
+  display: inline-flex;
+  gap: 14px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.ent-bigcta__mascot {
+  position: absolute;
+  bottom: -32px;
+  right: -24px;
+  width: clamp(140px, 18vw, 240px);
+  z-index: 3;
+  pointer-events: none;
+  animation: ent-bob 4s ease-in-out infinite alternate;
+}
+/* Home CTA: large scroll-driven turntable cat. Placed FIRST in the panel with
+   no z-index, so it sits behind the heading/buttons; its transparent left
+   padding overlaps the centred text (text stays over terracotta), while the
+   cat's body reads clearly on the right. Panel's overflow:hidden clips it. */
+.ent-bigcta__cat {
+  position: absolute;
+  right: clamp(-10px, 0.8vw, 20px);  /* near the right edge again — shifted right with the text */
+  bottom: 0;                         /* slightly bottom-aligned */
+  height: 110%;                      /* enlarged — taller than the panel; overflow clips the transparent margin */
+  width: auto;
+  max-width: 62%;                    /* never dominate the whole panel width */
+  pointer-events: none;
+  will-change: transform;
+}
+@media (max-width: 767px) {
+  /* mobile: single static frame, smaller, tucked in the corner — no pin/scrub */
+  .ent-bigcta__cat {
+    height: auto;
+    width: clamp(140px, 42vw, 230px);
+    max-width: none;
+    right: -8px;
+    bottom: -12px;
+  }
+}
+/* Home CTA: left-align the copy so it clears the cat, and keep the whole panel
+   within one screen — smaller heading + tighter padding than the shared style.
+   Scoped to #ent-cta — the capabilities-page CTA (same classes) stays centred. */
+#ent-cta                      { padding: clamp(80px, 10vw, 160px) 0; }
+#ent-cta .ent-bigcta__panel   { text-align: left; padding: clamp(28px, 3.5vw, 52px) clamp(28px, 4vw, 60px); padding-left: clamp(48px, 7vw, 120px); }
+#ent-cta .ent-bigcta__title   { max-width: min(560px, 52%); font-size: clamp(30px, 3.4vw, 56px); }
+#ent-cta .ent-bigcta__sub     { margin-left: 0; margin-right: 0; max-width: min(46ch, 50%); }
+#ent-cta .ent-bigcta__actions { justify-content: flex-start; }
+@media (max-width: 767px) {
+  /* mobile: small corner cat — let the copy use the full width again */
+  #ent-cta .ent-bigcta__title,
+  #ent-cta .ent-bigcta__sub { max-width: none; }
+}
+
+/* ============================================================
+   ABOUT page
+   ============================================================ */
+.ent-about-hero {
+  position: relative;
+  overflow: hidden;
+  padding: clamp(56px, 7vw, 110px) 0 clamp(48px, 6vw, 96px);
+  min-height: min(100vh, 920px);
+  display: flex;
+  align-items: center;
+}
+.ent-about-hero__inner {
+  width: 100%;            /* full-width container — keeps the left margin aligned with other sections */
+}
+.ent-about-hero__copy {
+  position: relative;
+  z-index: 2;
+  max-width: min(74%, 900px);
+}
+.ent-about-hero__hello {
+  display: inline-flex; align-items: center; gap: 14px;
+  font-family: var(--a28-font-mono);
+  font-weight: var(--a28-w-medium);
+  font-size: 12px;
+  letter-spacing: var(--a28-track-eyebrow);
+  text-transform: uppercase;
+  color: var(--ent-terra-deep);
+  padding: 10px 20px;
+  background: var(--ent-mist);
+  border: 2px solid var(--ent-ink);
+  border-radius: 999px;
+  box-shadow: 3px 3px 0 var(--ent-ink);
+  transform: rotate(-2deg);
+}
+.ent-about-hero__hello::before {
+  content: "👋";
+  font-size: 22px;
+}
+.ent-about-hero__title {
+  margin: 28px 0 24px;
+  font-size: clamp(40px, 5.4vw, 80px);   /* longer rows — fits "A crew that builds" on one line */
+}
+.ent-about-hero__body {
+  font-size: clamp(17px, 1.4vw, 21px);
+  font-weight: 500;
+  line-height: 1.6;
+  color: var(--ent-ink-soft);
+  max-width: 42ch;
+}
+/* Two sideways mascots at the right edge, with enough of each body in view. */
+.ent-about-hero__art {
+  position: absolute;
+  top: 0; right: 0; bottom: 0;
+  width: clamp(380px, 52vw, 760px);
+  pointer-events: none;
+  z-index: 1;
+}
+.ent-about-hero__peek {
+  position: absolute;
+  right: clamp(-76px, -4vw, -54px);
+  width: clamp(300px, 30vw, 420px);
+  height: auto;
+  transform: rotate(-90deg);
+  filter: drop-shadow(0 24px 30px rgba(61,44,32,0.32));
+}
+.ent-about-hero__peek--capy { top:    clamp(8px, 2vh, 28px); }
+.ent-about-hero__peek--cat  { bottom: clamp(8px, 2vh, 28px); }
+
+@media (max-width: 860px) {
+  /* Keep the desktop flex layout — copy on the left, mascots pinned to the
+     right edge. Sizes shrink, but the composition stays the same so the
+     two peek images don't move down to the bottom of the section. */
+  .ent-about-hero {
+    min-height: auto;
+    padding-top:    clamp(48px, 8vw, 88px);
+    padding-bottom: clamp(48px, 7vw, 80px);
+  }
+  .ent-about-hero__copy { max-width: 60%; }
+  .ent-about-hero__art  { width: clamp(140px, 38vw, 300px); }
+  .ent-about-hero__peek {
+    width: clamp(150px, 34vw, 260px);
+    right: clamp(-32px, -2vw, -12px);
+  }
+  .ent-about-hero__peek--capy { top:    clamp(8px, 2vh, 24px); left: auto; }
+  .ent-about-hero__peek--cat  { bottom: clamp(8px, 2vh, 24px); right: clamp(-32px, -2vw, -12px); top: auto; }
+}
+
+/* Mobile: keep both peek mascots pinned to the right at every size — they
+   are part of the identity of this hero. Instead, tighten the copy column
+   and scale the mascots down further so the title still has room to read. */
+@media (max-width: 600px) {
+  .ent-about-hero {
+    padding-top:    clamp(40px, 12vw, 72px);
+    padding-bottom: clamp(40px, 10vw, 64px);
+  }
+  .ent-about-hero__copy   { max-width: 58%; }
+  .ent-about-hero__art    { width: clamp(96px, 32vw, 150px); }
+  .ent-about-hero__peek   { width: clamp(100px, 30vw, 150px); right: clamp(-12px, -2vw, -4px); }
+  .ent-about-hero__peek--cat { right: clamp(-12px, -2vw, -4px); }
+  .ent-about-hero__title  { font-size: clamp(26px, 7.8vw, 42px); margin: 18px 0 14px; }
+  .ent-about-hero__body   { font-size: clamp(14px, 3.8vw, 16px); max-width: 100%; }
+  .ent-about-hero__hello  { padding: 8px 14px; font-size: 11px; }
+}
+@media (max-width: 380px) {
+  .ent-about-hero__copy   { max-width: 60%; }
+  .ent-about-hero__art    { width: 88px; }
+  .ent-about-hero__peek   { width: 94px; }
+  .ent-about-hero__peek--cat { right: -6px; }
+  .ent-about-hero__title  { font-size: 24px; }
+}
+
+/* About: numbered idea cards */
+.ent-ideas {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 28px;
+}
+@media (max-width: 720px) { .ent-ideas { grid-template-columns: 1fr; } }
+
+.ent-idea {
+  position: relative;
+  background: var(--ent-cream-paper);
+  border: 2.5px solid var(--ent-ink);
+  border-radius: 24px;
+  padding: 36px 32px 32px;
+  box-shadow: var(--ent-shadow-card);
+  transition: transform 320ms cubic-bezier(.34,1.56,.64,1);
+}
+.ent-idea:nth-child(2) { background: var(--ent-mist); transform: rotate(0.5deg); }
+.ent-idea:nth-child(3) { background: var(--ent-peach); transform: rotate(-0.3deg); }
+.ent-idea:hover { transform: translateY(-6px) rotate(-1deg); }
+.ent-idea__num {
+  position: absolute;
+  top: -16px; left: 24px;
+  background: var(--ent-ink);
+  color: var(--ent-cream-paper);
+  font-family: var(--a28-font-mono);
+  font-weight: var(--a28-w-medium);
+  font-size: 13px;
+  padding: 6px 14px;
+  border-radius: 999px;
+  letter-spacing: var(--a28-track-eyebrow);
+}
+.ent-idea__title {
+  margin: 0 0 12px;
+  font-family: var(--a28-font-display);
+  font-weight: var(--a28-w-regular);
+  font-size: 26px;
+  color: var(--ent-ink);
+  letter-spacing: var(--a28-track-display);
+}
+.ent-idea__body {
+  margin: 0;
+  font-size: 15px;
+  line-height: 1.6;
+  color: var(--ent-ink-soft);
+}
+
+/* About: "Who we are" statement */
+.ent-statement {
+  padding: clamp(64px, 8vw, 120px) 0;
+}
+.ent-statement__panel {
+  position: relative;
+  max-width: 920px;
+  margin: 0 auto;
+  text-align: center;
+  padding: clamp(40px, 5vw, 80px);
+  background: var(--ent-cream-paper);
+  border: 2.5px solid var(--ent-ink);
+  border-radius: 32px;
+  box-shadow: 8px 8px 0 var(--ent-ink);
+}
+.ent-statement__pin-tl, .ent-statement__pin-tr,
+.ent-statement__pin-bl, .ent-statement__pin-br {
+  position: absolute;
+  width: 22px; height: 22px;
+  background: var(--ent-terra);
+  border-radius: 50%;
+  border: 2px solid var(--ent-ink);
+  box-shadow: 0 4px 0 rgba(0,0,0,0.12);
+}
+.ent-statement__pin-tl { top: 18px;    left: 18px; }
+.ent-statement__pin-tr { top: 18px;    right: 18px; }
+.ent-statement__pin-bl { bottom: 18px; left: 18px; }
+.ent-statement__pin-br { bottom: 18px; right: 18px; }
+.ent-statement__title {
+  margin: clamp(18px, 2.2vw, 36px) 0 24px;
+}
+.ent-statement__body p {
+  font-size: clamp(15px, 1.2vw, 17.5px);
+  line-height: 1.7;
+  color: var(--ent-ink-soft);
+  margin: 0 0 16px;
+}
+.ent-statement__body p:last-child { margin-bottom: 0; }
+
+/* ============================================================
+   CAPABILITIES page: collectible trading-card deck
+   ============================================================ */
+.ent-cap-hero {
+  padding: clamp(64px, 8vw, 120px) 0 clamp(32px, 4vw, 64px);
+  text-align: center;
+  position: relative;
+}
+.ent-cap-hero__sticker {
+  display: inline-block;
+  background: var(--ent-terra);
+  color: #fff;
+  padding: 8px 18px;
+  border-radius: 999px;
+  font-family: var(--a28-font-mono);
+  font-weight: var(--a28-w-medium);
+  font-size: 12px;
+  letter-spacing: var(--a28-track-eyebrow);
+  text-transform: uppercase;
+  border: 2px solid var(--ent-ink);
+  box-shadow: 3px 3px 0 var(--ent-ink);
+  transform: rotate(-2deg);
+  margin-bottom: 28px;
+}
+.ent-cap-hero__title {
+  margin: 0 auto 18px;
+  max-width: 18ch;
+}
+.ent-cap-hero__sub {
+  margin: 0 auto;
+  max-width: 56ch;
+  font-size: clamp(16px, 1.3vw, 20px);
+  line-height: 1.55;
+  font-weight: 500;
+  color: var(--ent-ink-soft);
+}
+
+.ent-cap-deck {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 28px;
+  padding: clamp(40px, 5vw, 64px) 0 clamp(64px, 8vw, 96px);
+}
+@media (max-width: 1080px) { .ent-cap-deck { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 600px)  { .ent-cap-deck { grid-template-columns: 1fr; max-width: 360px; margin-left: auto; margin-right: auto; } }
+
+/* 3.5: capability cards are deep-link targets from the home cards.
+   Clear the sticky nav on jump, and flash a ring so the user sees which
+   card they landed on. */
+.ent-cap-card { scroll-margin-top: 104px; }
+.ent-cap-card:target {
+  outline: 2px solid var(--ent-terra, #B14E2E);
+  outline-offset: 4px;
+  animation: capTargetFlash 1.8s ease-out 1;
+}
+@keyframes capTargetFlash {
+  0%, 18% { box-shadow: 0 0 0 0 rgba(177, 78, 46, 0.0); }
+  30%     { box-shadow: 0 0 0 6px rgba(177, 78, 46, 0.28); }
+  100%    { box-shadow: 0 0 0 0 rgba(177, 78, 46, 0.0); }
+}
+@media (prefers-reduced-motion: reduce) { .ent-cap-card:target { animation: none; } }
+
+.ent-cap-card {
+  --rx: 0deg;     /* tilt — set by JS from cursor */
+  --ry: 0deg;
+  --mx: 50%;      /* glare / foil focus point — set by JS */
+  --my: 50%;
+  --pop: 0px;     /* hover lift */
+  position: relative;
+  background: var(--ent-cream-paper);
+  border: 2.5px solid var(--ent-ink);
+  border-radius: 24px;
+  padding: 24px 20px clamp(64px, 6vw, 84px);  /* extra bottom room so bullets clear the corner mascot */
+  box-shadow: var(--ent-shadow-card);
+  display: flex; flex-direction: column;
+  transform: perspective(900px) rotateX(var(--rx)) rotateY(var(--ry)) translateY(var(--pop));
+  transform-style: preserve-3d;
+  transition: transform 450ms cubic-bezier(.23,1,.32,1), box-shadow 360ms ease;
+  will-change: transform;
+}
+/* no overflow:hidden — the foil clips itself via border-radius:inherit, and the
+   mascot sticker is allowed to peek past the card edge */
+/* while the cursor is actively driving the tilt, follow instantly (no lag) */
+.ent-cap-card.is-tilting { transition: box-shadow 360ms ease; }
+
+.ent-cap-card:nth-child(1) { background: linear-gradient(155deg, var(--ent-peach) 0%, var(--ent-mist) 100%); }
+.ent-cap-card:nth-child(2) { background: linear-gradient(155deg, var(--ent-sky) 0%, var(--ent-cream-paper) 70%); }
+.ent-cap-card:nth-child(3) { background: linear-gradient(155deg, var(--ent-sage) 0%, var(--ent-cream-paper) 70%); }
+.ent-cap-card:nth-child(4) { background: linear-gradient(155deg, var(--ent-blush) 0%, var(--ent-cream-paper) 70%); }
+
+/* ---- holographic foil: brand-hue bands (overlay keeps dark text dark) ---- */
+.ent-cap-card::before {
+  content: "";
+  position: absolute; inset: 0;
+  border-radius: inherit;
+  pointer-events: none;
+  z-index: 4;
+  opacity: 0;
+  background:
+    repeating-linear-gradient(
+      115deg,
+      transparent 0%,
+      rgba(209,118,84,0.55) 7%,    /* terra  */
+      rgba(159,185,201,0.55) 14%,  /* sky    */
+      rgba(143,161,124,0.55) 21%,  /* sage   */
+      rgba(232,180,160,0.55) 28%,  /* blush  */
+      transparent 36%
+    );
+  background-size: 230% 230%;
+  background-position: var(--mx) var(--my);
+  mix-blend-mode: overlay;
+  transition: opacity 320ms ease;
+}
+/* ---- glare spot that tracks the cursor ---- */
+.ent-cap-card::after {
+  content: "";
+  position: absolute; inset: 0;
+  border-radius: inherit;
+  pointer-events: none;
+  z-index: 5;
+  opacity: 0;
+  background: radial-gradient(
+    circle at var(--mx) var(--my),
+    rgba(255,255,255,0.65),
+    rgba(255,255,255,0.10) 28%,
+    transparent 55%
+  );
+  mix-blend-mode: soft-light;
+  transition: opacity 320ms ease;
+}
+
+.ent-cap-card:hover { --pop: -10px; box-shadow: var(--ent-shadow-pop); }
+.ent-cap-card:hover::before { opacity: 0.5; }
+.ent-cap-card:hover::after  { opacity: 0.85; }
+
+/* reduced motion: drop the 3D tilt + moving foil, keep a clean hover lift */
+@media (prefers-reduced-motion: reduce) {
+  .ent-cap-card { transform: translateY(var(--pop)); transition: transform 200ms ease, box-shadow 360ms ease; }
+  .ent-cap-card::before, .ent-cap-card::after { display: none; }
+  .ent-cap-card__mascot { transition: none; }
+  .ent-cap-card:hover .ent-cap-card__mascot { animation: none; transform: rotate(var(--tilt)); }
+}
+/* keep the text above the foil (crisp) — the icon art tile stays below it so the sheen sweeps over the art */
+.ent-cap-card__head,
+.ent-cap-card__name,
+.ent-cap-card__body,
+.ent-cap-card__bullets { position: relative; z-index: 6; }
+.ent-cap-card__head {
+  display: flex; justify-content: space-between; align-items: flex-start;
+  font-family: var(--a28-font-mono);
+  font-weight: var(--a28-w-medium);
+  font-size: 11px;
+  line-height: 1.55;
+  letter-spacing: var(--a28-track-eyebrow);
+  text-transform: uppercase;
+  color: var(--ent-ink);
+}
+.ent-cap-card__rarity {
+  background: var(--ent-ink);
+  color: var(--ent-cream-paper);
+  padding: 4px 10px;
+  border-radius: 999px;
+  font-size: 10px;
+}
+.ent-cap-card__art {
+  position: relative;
+  margin: 20px 0;
+  aspect-ratio: 1 / 1;
+  border-radius: 18px;
+  border: 2px solid var(--ent-ink);
+  overflow: hidden;
+}
+.ent-cap-card__art img {
+  width: 100%; height: 100%;
+  object-fit: cover;
+  display: block;
+}
+/* warm brand tint so the corporate photos sit in the playful palette */
+.ent-cap-card__art::after {
+  content: "";
+  position: absolute; inset: 0;
+  background: linear-gradient(160deg, rgba(209,118,84,0.30), rgba(61,44,32,0.18));
+  mix-blend-mode: multiply;
+  pointer-events: none;
+}
+.ent-cap-card__name {
+  margin: 0 0 8px;
+  font-family: var(--a28-font-display);
+  font-weight: var(--a28-w-regular);
+  font-size: 24px;
+  letter-spacing: var(--a28-track-display);
+  line-height: 1.15;
+  color: var(--ent-ink);
+}
+.ent-cap-card__body {
+  margin: 0;
+  font-size: 13.5px;
+  line-height: 1.55;
+  color: var(--ent-ink-soft);
+  flex-grow: 1;
+}
+.ent-cap-card__bullets {
+  margin: 14px 0 0;
+  padding: 14px 0 0;
+  border-top: 1.5px dashed var(--ent-ink);
+  list-style: none;
+}
+.ent-cap-card__bullets li {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--ent-ink);
+  padding: 3px 0;
+  display: flex; align-items: center; gap: 8px;
+}
+.ent-cap-card__bullets li::before {
+  content: "→";
+  color: var(--ent-terra-deep);
+  font-weight: 800;
+}
+/* 3D mascot sticker peeking from the card's bottom-right corner */
+.ent-cap-card__mascot {
+  position: absolute;
+  right: clamp(-8px, -1.6vw, -22px);
+  bottom: clamp(-8px, -1.6vw, -22px);
+  width: clamp(82px, 7vw, 108px);
+  height: auto;
+  z-index: 7;                 /* above foil + text — stays crisp */
+  pointer-events: none;
+  filter: drop-shadow(0 7px 9px rgba(61,44,32,0.34));
+  transform: rotate(var(--tilt, -7deg));
+  transition: transform 260ms cubic-bezier(.34,1.56,.64,1);
+}
+.ent-cap-card__mascot--capy { --tilt: -7deg; }
+.ent-cap-card__mascot--cat  { --tilt:  7deg; }
+/* Duo arrangement: capy keeps the corner; cat sits to its left at
+   the same size and baseline, with a small overlap so they read as
+   a pair rather than two separate stickers. */
+.ent-cap-card__mascot--duo.ent-cap-card__mascot--cat {
+  right: calc(clamp(82px, 7vw, 108px) - 28px);
+  bottom: clamp(-8px, -1.6vw, -22px);
+  z-index: 6;
+}
+.ent-cap-card:hover .ent-cap-card__mascot {
+  animation: ent-mascot-wiggle 760ms cubic-bezier(.36,.07,.19,.97);
+}
+@keyframes ent-mascot-wiggle {
+  0%, 100% { transform: rotate(var(--tilt)) translateY(0); }
+  30%      { transform: rotate(calc(var(--tilt) - 9deg)) translateY(-6px); }
+  65%      { transform: rotate(calc(var(--tilt) + 6deg)) translateY(-2px); }
+}
+
+/* ============================================================
+   WORK page: gallery shelf of polaroids
+   ============================================================ */
+.ent-work-hero {
+  padding: clamp(64px, 8vw, 120px) 0 clamp(40px, 5vw, 80px);
+  text-align: center;
+}
+.ent-work-hero__title { margin: 0 auto 18px; max-width: 16ch; }
+.ent-work-hero__sub {
+  margin: 0 auto;
+  max-width: 52ch;
+  font-size: clamp(16px, 1.3vw, 19px);
+  font-weight: 500;
+  line-height: 1.6;
+  color: var(--ent-ink-soft);
+}
+
+.ent-shelf {
+  padding: clamp(40px, 5vw, 80px) 0 clamp(80px, 10vw, 144px);
+}
+.ent-shelf__row {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: clamp(20px, 3vw, 40px);
+  margin-bottom: clamp(48px, 6vw, 80px);
+}
+.ent-shelf__row:last-child { margin-bottom: 0; }
+@media (max-width: 900px) { .ent-shelf__row { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 600px) { .ent-shelf__row { grid-template-columns: 1fr; max-width: 360px; margin-left: auto; margin-right: auto; } }
+
+/* ============================================================
+   WORK page: full case-study detail cards
+   ============================================================ */
+.ent-case {
+  scroll-margin-top: clamp(88px, 11vh, 116px);   /* clear the sticky nav when jumped to */
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(28px, 4vw, 56px);
+  align-items: stretch;
+  background: var(--ent-cream-paper);
+  border: 2.5px solid var(--ent-ink);
+  border-radius: 28px;
+  padding: clamp(28px, 4vw, 48px);
+  box-shadow: var(--ent-shadow-card);
+  margin-top: clamp(40px, 6vw, 80px);
+}
+.ent-case--mist  { background: var(--ent-mist); }
+.ent-case--peach { background: var(--ent-peach); }
+.ent-case__media {
+  position: relative;
+  min-height: 280px;
+  border-radius: 18px;
+  overflow: hidden;
+  border: 2.5px solid var(--ent-ink);
+}
+.ent-case__media img {
+  position: absolute; inset: 0;
+  width: 100%; height: 100%;
+  object-fit: cover;
+}
+.ent-case--flip .ent-case__media { order: -1; }
+.ent-case__body { align-self: center; }
+.ent-case__title { margin: 16px 0 8px; }
+.ent-case__lead {
+  font-size: 15px; line-height: 1.6;
+  color: var(--ent-ink-soft); margin: 0 0 24px;
+}
+.ent-case__cols { display: flex; gap: 32px; flex-wrap: wrap; }
+.ent-case__col h3 {
+  font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase;
+  color: var(--ent-terra-deep); font-weight: 800; margin: 0 0 8px;
+}
+.ent-case__col ul {
+  list-style: none; margin: 0; padding: 0;
+  font-size: 14px; line-height: 1.7; color: var(--ent-ink);
+}
+.ent-case__col li { position: relative; padding-left: 18px; }
+.ent-case__col li::before {
+  content: "→"; position: absolute; left: 0;
+  color: var(--ent-terra-deep); font-weight: 800;
+}
+@media (max-width: 760px) {
+  .ent-case { grid-template-columns: 1fr; }
+  .ent-case--flip .ent-case__media { order: 0; }
+}
+
+/* ============================================================
+   Reusable arrow checklist (about focus / how-we-work, etc.)
+   ============================================================ */
+.ent-checklist { list-style: none; margin: 0; padding: 0; }
+.ent-checklist li {
+  position: relative;
+  padding: 6px 0 6px 22px;
+  font-size: 15px;
+  line-height: 1.6;
+  color: var(--ent-ink-soft);
+}
+.ent-checklist li::before {
+  content: "→";
+  position: absolute; left: 0; top: 6px;
+  color: var(--ent-terra-deep);
+  font-weight: 800;
+}
+
+/* ============================================================
+   CONTACT page: speech-bubble form
+   ============================================================ */
+.ent-contact {
+  padding: clamp(64px, 8vw, 120px) 0;
+  background:
+    radial-gradient(circle at 14% 12%, rgba(240,201,168,0.4), transparent 28%),
+    radial-gradient(circle at 86% 88%, rgba(209,118,84,0.18), transparent 32%),
+    var(--ent-cream);
+  overflow: hidden;     /* clip the sign mascot's -28px corner offset on narrow screens */
+}
+.ent-contact__inner {
+  display: grid;
+  grid-template-columns: 1fr 1.05fr;
+  gap: clamp(40px, 5vw, 80px);
+  align-items: start;
+}
+.ent-contact__sign {
+  position: relative;
+}
+.ent-contact__signboard {
+  position: relative;
+  background: var(--ent-terra);
+  color: #fff;
+  border: 3px solid var(--ent-ink);
+  border-radius: 24px;
+  padding: clamp(28px, 4vw, 56px);
+  box-shadow: 8px 8px 0 var(--ent-ink);
+  transform: rotate(-1.5deg);
+}
+.ent-contact__signboard::before, .ent-contact__signboard::after {
+  content: "";
+  position: absolute;
+  top: -16px;
+  width: 18px; height: 18px;
+  background: var(--ent-ink);
+  border-radius: 50%;
+  border: 2px solid var(--ent-cream);
+}
+.ent-contact__signboard::before { left: 24px; }
+.ent-contact__signboard::after  { right: 24px; }
+.ent-contact__signboard h1 {
+  margin: 16px 0 12px;
+  font-family: var(--a28-font-display);
+  font-weight: var(--a28-w-regular);
+  font-size: clamp(40px, 5vw, 72px);
+  letter-spacing: var(--a28-track-display);
+  line-height: 0.95;
+  color: #fff;
+}
+.ent-contact__signboard p {
+  margin: 0;
+  font-size: clamp(15px, 1.2vw, 18px);
+  font-weight: 500;
+  line-height: 1.55;
+  color: rgba(255,255,255,0.92);
+}
+.ent-contact__sign-mascot {
+  position: absolute;
+  bottom: clamp(-12px, -1.4vw, -20px);
+  right: clamp(-8px, -1.6vw, -28px);   /* bottom-right corner — the empty side of the cards, clear of the checklist text */
+  width: clamp(120px, 14vw, 180px);
+  z-index: 3;
+  animation: ent-bob 4.4s ease-in-out infinite alternate;
+}
+
+/* ---- Contact-page footer peek: full-body mascot stickers sit on a
+   zero-height rail directly above the footer, then translate DOWN so
+   their lower halves cross the footer's top edge. The footer paints
+   its dark background on top of them next in DOM order, so only the
+   heads remain visible above the line — no mask, no fade. ---- */
+.footer-peek-rail {
+  position: relative;
+  height: 0;
+  pointer-events: none;
+}
+.footer-peek {
+  display: none;
+  position: absolute;
+  right: clamp(40px, 6vw, 120px);
+  bottom: 0;     /* anchored at the rail's baseline = footer's top edge */
+  align-items: flex-end;
+  gap: 0;
+}
+/* Pull the capy in toward the cat so the two heads cluster together. */
+.footer-peek__img--capy { margin-left: clamp(-90px, -7vw, -60px); }
+[data-theme="enterprise"] .footer-peek { display: flex; }
+.footer-peek__img {
+  display: block;
+  width: clamp(210px, 21vw, 270px);
+  height: auto;
+  /* Push the sticker DOWN so its lower portion crosses into the
+     footer (where the dark bg overlays it). Tune so each chin lands
+     just inside the footer. */
+  transform: translateY(30%);
+  filter: drop-shadow(0 6px 8px rgba(0,0,0,0.28));
+}
+/* Narrow phones: the two-head cluster (210 + 210-90 = ~330px) overflows
+   a 320–414px viewport. Shrink the heads and tighten the overlap so the
+   pair tucks fully inside the right side of the footer. */
+@media (max-width: 480px) {
+  .footer-peek { right: clamp(16px, 4vw, 28px); }
+  .footer-peek__img { width: 130px; }
+  .footer-peek__img--capy { margin-left: -54px; }
+}
+.ent-contact__cards {
+  margin-top: 28px;
+  display: flex; flex-direction: column;
+  gap: 16px;
+}
+.ent-contact__cards a {
+  display: flex; align-items: center; gap: 14px;
+  padding: 18px 22px;
+  background: var(--ent-cream-paper);
+  border: 2px solid var(--ent-ink);
+  border-radius: 18px;
+  text-decoration: none;
+  color: var(--ent-ink);
+  font-family: var(--a28-font-sans);
+  font-weight: var(--a28-w-medium);
+  font-size: 16px;
+  box-shadow: 4px 4px 0 var(--ent-ink);
+  transition: transform 220ms cubic-bezier(.34,1.56,.64,1);
+}
+.ent-contact__cards a:hover { transform: translate(-2px, -2px); }
+.ent-contact__cards .material-symbols-outlined {
+  color: var(--ent-terra-deep);
+  font-size: 28px;
+}
+.ent-contact__cards small {
+  display: block;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--ent-ink-soft);
+  margin-bottom: 4px;
+}
+.ent-contact__areas {
+  padding: 18px 22px;
+  background: var(--ent-cream-paper);
+  border: 2px solid var(--ent-ink);
+  border-radius: 18px;
+  box-shadow: 4px 4px 0 var(--ent-ink);
+}
+.ent-contact__areas small {
+  display: block;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--ent-ink-soft);
+  margin-bottom: 10px;
+}
+.ent-contact__areas .ent-checklist li {
+  color: var(--ent-ink);
+  font-size: 14px;
+  padding: 4px 0 4px 22px;
+}
+
+.ent-form {
+  background: var(--ent-cream-paper);
+  border: 2.5px solid var(--ent-ink);
+  border-radius: 28px;
+  padding: clamp(32px, 4vw, 56px);
+  box-shadow: 8px 8px 0 var(--ent-ink);
+}
+.ent-form__title {
+  margin: 0 0 8px;
+  font-family: var(--a28-font-display);
+  font-weight: var(--a28-w-regular);
+  font-size: clamp(28px, 2.8vw, 36px);
+  letter-spacing: var(--a28-track-display);
+  color: var(--ent-ink);
+}
+.ent-form__sub {
+  margin: 0 0 28px;
+  font-size: 15px;
+  color: var(--ent-ink-soft);
+}
+.ent-form__grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 18px 16px;
+}
+.ent-form__field {
+  display: flex; flex-direction: column;
+  gap: 6px;
+}
+.ent-form__field--full { grid-column: 1 / 3; }
+.ent-form__label {
+  font-family: var(--a28-font-mono);
+  font-weight: var(--a28-w-medium);
+  font-size: 12px;
+  letter-spacing: var(--a28-track-eyebrow);
+  text-transform: uppercase;
+  color: var(--ent-ink);
+}
+.ent-form input, .ent-form textarea {
+  font-family: var(--a28-font-sans);
+  font-size: 16px;
+  font-weight: var(--a28-w-regular);
+  padding: 16px 18px;
+  background: var(--ent-cream);
+  border: 2px solid var(--ent-ink);
+  border-radius: 14px;
+  color: var(--ent-ink);
+  outline: none;
+  transition: border-color 200ms ease, box-shadow 200ms ease, transform 200ms ease;
+}
+.ent-form input:focus, .ent-form textarea:focus {
+  border-color: var(--ent-terra-deep);
+  box-shadow: 3px 3px 0 var(--ent-terra-deep);
+  transform: translate(-1px, -1px);
+}
+.ent-form textarea {
+  resize: vertical;
+  min-height: 120px;
+  line-height: 1.55;
+}
+.ent-form__submit { margin-top: 28px; }
+.ent-form__feedback {
+  margin-top: 18px;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--ent-terra-deep);
+  min-height: 20px;
+}
+
+@media (max-width: 920px) {
+  .ent-contact__inner { grid-template-columns: 1fr; }
+  .ent-contact__signboard { max-width: 540px; }
+  .ent-form__grid { grid-template-columns: 1fr; }
+  .ent-form__field--full { grid-column: 1; }
+}
+
+/* ============================================================
+   Back-to-top button — enterprise variant (designer-toy pill)
+   ============================================================ */
+[data-theme="enterprise"] body .to-top {
+  background: var(--a28-gold-light);
+  color: #fff;
+  border: 2px solid var(--a28-ink);
+  box-shadow: 3px 3px 0 var(--a28-ink);
+}
+[data-theme="enterprise"] body .to-top:hover {
+  background: var(--a28-gold);
+}
+[data-theme="enterprise"] body .to-top.is-visible:hover {
+  transform: translate(-1px, -1px);
+  box-shadow: 4px 4px 0 var(--a28-ink);
+}
+[data-theme="enterprise"] body .to-top:active {
+  transform: translate(2px, 2px);
+  box-shadow: 0 0 0 var(--a28-ink);
+}
+
+/* ============================================================
+   Reveal: subtle pop-in (works inside enterprise page)
+   Overrides the generic .reveal so enterprise scrolls feel
+   bouncier without breaking government's reveal behavior.
+   ============================================================ */
+.ent-reveal {
+  opacity: 0;
+  transform: translateY(18px) scale(0.98);
+  transition: opacity 600ms cubic-bezier(.34,1.56,.64,1),
+              transform 600ms cubic-bezier(.34,1.56,.64,1);
+}
+.ent-reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
+
+/* ============================================================
+   Animations
+   ============================================================ */
+@keyframes ent-bob {
+  from { transform: translateY(0)  rotate(-0.4deg); }
+  to   { transform: translateY(-8px) rotate(0.4deg); }
+}
+@keyframes ent-wobble {
+  0%   { transform: rotate(-1deg); }
+  50%  { transform: rotate(1deg); }
+  100% { transform: rotate(-1deg); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ent-hero__crew img,
+  .ent-bigcta__mascot,
+  .ent-contact__sign-mascot {
+    animation: none;
+  }
+  .ent-reveal {
+    transform: none;
+    transition: opacity 200ms linear;
+  }
+}
+
+/* ============================================================
+   ABOUT page — tipped-mascots reveal ("Focus & How We Work")
+   Oyen + Techybara are tipped over toward opposite sides — cat
+   ~70° counter-clockwise, capy ~70° clockwise — so each head sits
+   in the centre area and the bodies stretch downward/inward, with
+   the lower halves clipped off by the stage's overflow:hidden. The
+   visible paw on each side reaches OUTWARD toward the matching
+   screen edge. A single GSAP timeline per side owns the 3-step
+   hover sequence: image swap → 250ms hold → big paw scales out via
+   back.out(1.7). tl.reverse() at timeScale 1.67 for the snappier
+   ~240ms exit. See site.js → "About: tipped-mascots reveal" for
+   the state machine that drives play / reverse.
+   ============================================================ */
+.ent-mascot-reveal {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  min-height: 40vh;
+  padding: clamp(32px, 4vw, 56px) 0 clamp(64px, 6vw, 104px);
+  overflow: visible;                       /* clips mascot bodies that extend past the bottom */
+  background:
+    radial-gradient(ellipse at 50% 32%, rgba(247, 224, 208, 0.6), transparent 65%),
+    var(--ent-cream);
+}
+
+.ent-mascot-stage {
+  position: relative;
+  flex: 1;
+  min-height: 360px;
+  margin-top: 0;
+  overflow: visible;                       /* second clip for the side hit-zones */
+}
+
+/* ---- Side hit-zones ----
+   clip-path creates the "invisible wall" at the centre seam: horizontal
+   edges clip exactly at the side container bounds, but the top/bottom
+   inset is expanded far past the element so mascot heads, lower bodies,
+   and drop-shadows can render outside the side container vertically
+   (into the stage's padding area). Using clip-path instead of
+   overflow:hidden because the latter clips on all four sides. */
+.ent-mascot-side {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 50%;
+  clip-path: inset(-9999px 0 -9999px 0);
+}
+.ent-mascot-side--left  { left:  0; }
+.ent-mascot-side--right { right: 0; }
+
+/* ---- Mascot ----
+   Anchored at the stage floor (bottom:0) so the full body shows above
+   the section's bottom edge. Each mascot sits slightly past the centre
+   seam (right:-6% / left:-6%) so their inner halves overlap — the
+   .ent-mascot-side overflow:hidden then clips that overlap cleanly at
+   the wall, producing a side-by-side "split screen" composition.
+   Pivot moved to the feet (transform-origin: 50% 100%) so the soles
+   stay planted on the floor and only the body+head bobs; the previous
+   top-pivot caused the feet to swing, which read as unnatural. */
+.ent-mascot {
+  position: absolute;
+  bottom: clamp(28px, 4vw, 56px);          /* lifted off the floor so the lower body + drop-shadow aren't clipped */
+  width: clamp(260px, 30vw, 400px);
+  height: clamp(340px, 40vw, 480px);      /* fits the stage — full body visible */
+  pointer-events: none;                   /* clicks pass through to the paw dot underneath */
+  transform-origin: 50% 100%;             /* anchor at feet so bob keeps soles planted */
+  z-index: 2;                              /* drawn paw renders in front of the dot */
+}
+.ent-mascot--oyen {
+  --base-tilt: -40deg;                    /* CCW — strong outward lean */
+  right: -35%;                            /* light overlap past seam — wall trims the inner sliver */
+  filter: drop-shadow(6px 18px 16px rgba(61, 44, 32, 0.28));
+  animation: ent-mascot-bob 2.4s ease-in-out infinite;
+}
+.ent-mascot--capy {
+  --base-tilt: 40deg;                     /* CW — mirrored */
+  left: -35%;
+  filter: drop-shadow(-6px 18px 16px rgba(61, 44, 32, 0.28));
+  animation: ent-mascot-bob 2.4s ease-in-out infinite -1.2s;
+}
+/* Bob = ±1.5° oscillation around --base-tilt, pivoting at the feet.
+   Smaller amplitude than before because the head is now the farthest
+   point from the pivot and a smaller angle reads gentler. */
+@keyframes ent-mascot-bob {
+  0%, 100% { transform: rotate(calc(var(--base-tilt) - 1.5deg)); }
+  50%      { transform: rotate(calc(var(--base-tilt) + 1.5deg)); }
+}
+
+.ent-mascot__inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+.ent-mascot__img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  object-position: center bottom;         /* feet pinned to bottom of the box (the stage floor) */
+  user-select: none;
+  -webkit-user-drag: none;
+}
+/* Both poses are stacked; idle is the default and raise fades in on
+   hover / focus-within / is-card-open. The `is-suppress-raise` class
+   is added by JS on close to force idle even if the cursor is still
+   over the side — it's removed on the next mouseleave so hover works
+   again next time. Suppress rules come last so they win on specificity
+   ties via source order. */
+.ent-mascot__img { transition: opacity 250ms ease; }
+.ent-mascot__img--raise { opacity: 0; }
+.ent-mascot-side:hover         .ent-mascot__img--idle,
+.ent-mascot-side:focus-within  .ent-mascot__img--idle,
+.ent-mascot-side.is-card-open  .ent-mascot__img--idle { opacity: 0; }
+.ent-mascot-side:hover         .ent-mascot__img--raise,
+.ent-mascot-side:focus-within  .ent-mascot__img--raise,
+.ent-mascot-side.is-card-open  .ent-mascot__img--raise { opacity: 1; }
+.ent-mascot-side.is-suppress-raise .ent-mascot__img--idle  { opacity: 1; }
+.ent-mascot-side.is-suppress-raise .ent-mascot__img--raise { opacity: 0; }
+
+/* ---- Hint label ---- */
+.ent-mascot__hint {
+  position: absolute;
+  z-index: 3;
+  top: 30%;
+  padding: 8px 16px;
+  background: var(--ent-cream-paper);
+  border: 2px solid var(--ent-ink);
+  border-radius: 999px;
+  box-shadow: 3px 3px 0 var(--ent-ink);
+  font-family: var(--a28-font-mono);
+  font-weight: var(--a28-w-medium);
+  font-size: 11px;
+  letter-spacing: var(--a28-track-eyebrow);
+  text-transform: uppercase;
+  color: var(--ent-ink);
+  white-space: nowrap;
+  pointer-events: none;
+  opacity: 1;                              /* always visible */
+}
+/* Align to the same horizontal edge as `.ent-container` (max-width
+   1240, padding clamp(20, 4vw, 64)) so the pills don't drift outside
+   the content gutter on wide viewports. */
+.ent-mascot-side--left  .ent-mascot__hint {
+  left:  max(clamp(20px, 4vw, 64px), calc((100vw - 1240px) / 2 + clamp(20px, 4vw, 64px)));
+  transform: rotate(-4deg);
+}
+.ent-mascot-side--right .ent-mascot__hint {
+  right: max(clamp(20px, 4vw, 64px), calc((100vw - 1240px) / 2 + clamp(20px, 4vw, 64px)));
+  transform: rotate(4deg);
+}
+
+/* ---- Pulsing paw dot ----
+   Replaces the old big-paw stamp. A small glowing dot sits over the
+   visible centre of the mascot's extended paw; the mascot image
+   renders in front (z-index higher) so the dot reads as a marker
+   *on* the paw, not in front of it. Two CSS animations keep the
+   pulse going regardless of GSAP: the inner dot breathes (1→1.15)
+   and a translucent ring radar-pings outward (scale 1→2.5, opacity
+   0.6→0). Hover speeds both up and amplifies the inner pulse. */
+.ent-paw-dot {
+  position: absolute;
+  width: clamp(180px, 22vw, 280px);        /* hit zone = visible dot + small margin */
+  height: clamp(180px, 22vw, 280px);
+  border: none;
+  background: transparent;
+  padding: 0;
+  cursor: pointer;
+  z-index: 1;                              /* behind the mascot (mascot has pointer-events:none so clicks still hit) */
+  display: grid;
+  place-items: center;
+  transition: opacity 250ms ease;
+}
+.ent-paw-dot--left  { right:  12%; bottom: 18%; left: auto; }  /* outer side, partial overlap with mascot */
+.ent-paw-dot--right { left: 12%; bottom: 18%; right: auto; }
+
+.ent-paw-dot__inner {
+  position: relative;
+  z-index: 2;
+  width: clamp(160px, 20vw, 240px);        /* ~½ mascot height — big circular glow */
+  height: clamp(160px, 20vw, 240px);
+  border-radius: 50%;
+  background: radial-gradient(circle at 35% 32%,
+                              #FFF8E7 0%,
+                              #FFF8E7 38%,
+                              rgba(209, 118, 84, 0.95) 78%,
+                              rgba(209, 118, 84, 0.35) 100%);
+  box-shadow: 0 0 60px 16px rgba(209, 118, 84, 0.55),
+              0 0 18px 6px rgba(255, 248, 231, 0.7),
+              0 10px 22px rgba(61, 44, 32, 0.32);
+  animation: ent-paw-dot-pulse 1.5s ease-in-out infinite;
+}
+.ent-paw-dot__ring {
+  position: absolute;
+  z-index: 1;
+  width: clamp(160px, 20vw, 240px);
+  height: clamp(160px, 20vw, 240px);
+  border-radius: 50%;
+  background: rgba(209, 118, 84, 0.30);
+  animation: ent-paw-dot-ring 1.5s ease-out infinite;
+  pointer-events: none;
+}
+
+@keyframes ent-paw-dot-pulse {
+  0%, 100% { transform: scale(1);    filter: brightness(1); }
+  50%      { transform: scale(1.15); filter: brightness(1.08); }
+}
+@keyframes ent-paw-dot-ring {
+  0%   { transform: scale(1);   opacity: 0.5; }
+  100% { transform: scale(1.5); opacity: 0;   }
+}
+
+/* Hover/focus: bigger, brighter, faster. The :hover keyframes have
+   their own scale range so they override the idle pulse cleanly. */
+.ent-paw-dot:hover  .ent-paw-dot__inner,
+.ent-paw-dot:focus-visible .ent-paw-dot__inner {
+  animation: ent-paw-dot-pulse-hover 1s ease-in-out infinite;
+}
+.ent-paw-dot:hover  .ent-paw-dot__ring,
+.ent-paw-dot:focus-visible .ent-paw-dot__ring {
+  animation-duration: 1s;
+}
+@keyframes ent-paw-dot-pulse-hover {
+  0%, 100% { transform: scale(1.15); filter: brightness(1.15); }
+  50%      { transform: scale(1.3);  filter: brightness(1.25); }
+}
+
+.ent-paw-dot:focus-visible {
+  outline: 3px dashed var(--ent-terra-deep);
+  outline-offset: 6px;
+  border-radius: 50%;
+}
+
+/* Dot stays visible + clickable while the card is open — clicking the
+   dot again toggles the card closed. */
+
+/* Reduced motion: stop the pulse + ring entirely. */
+@media (prefers-reduced-motion: reduce) {
+  .ent-paw-dot__inner,
+  .ent-paw-dot__ring { animation: none; }
+}
+
+/* ---- Cards ---- */
+.ent-mascot-card {
+  position: absolute;
+  z-index: 6;
+  bottom: 14%;
+  width: clamp(260px, 26vw, 360px);
+  padding: clamp(18px, 1.8vw, 26px) clamp(20px, 2vw, 28px);
+  background: var(--ent-cream-paper);
+  border: 2.5px solid var(--ent-ink);
+  border-radius: 22px;
+  box-shadow: 8px 8px 0 var(--ent-ink);
+  pointer-events: auto;
+}
+.ent-mascot-card[hidden] { display: none; }
+.ent-mascot-card--focus { left:  8vw; background: var(--ent-cream-paper); }
+.ent-mascot-card--how   { right: 8vw; background: var(--ent-peach); }
+
+.ent-mascot-card__title {
+  margin: 8px 0 14px;
+  font-family: var(--a28-font-display);
+  font-weight: var(--a28-w-regular);
+  font-size: clamp(20px, 1.8vw, 26px);
+  letter-spacing: var(--a28-track-display);
+  line-height: 1.18;
+  color: var(--ent-ink);
+}
+
+/* ---- Compact desktop / tablet (768–1100px) ----
+   Between mobile (stacked) and full desktop. Desktop's 40° tilt + 35%
+   overlap pushes the mascots' rotated bounding boxes far past the
+   stage edges at this width — the body fragments leak into the next
+   section. Ease the proportions: smaller tilt, tighter overlap,
+   taller stage, roomier bottom padding so the leak stays contained
+   inside the section. */
+@media (min-width: 768px) and (max-width: 1100px) {
+  .ent-mascot-reveal {
+    padding-bottom: clamp(80px, 9vw, 128px);
+  }
+  .ent-mascot-stage {
+    min-height: 420px;
+  }
+  .ent-mascot--oyen { --base-tilt: -28deg; right: -18%; }
+  .ent-mascot--capy { --base-tilt:  28deg; left:  -18%; }
+  .ent-mascot {
+    bottom: clamp(40px, 5vw, 64px);
+    width: clamp(240px, 28vw, 320px);
+    height: clamp(320px, 38vw, 420px);
+  }
+  .ent-paw-dot {
+    width: clamp(160px, 22vw, 240px);
+    height: clamp(160px, 22vw, 240px);
+  }
+  .ent-paw-dot__inner,
+  .ent-paw-dot__ring {
+    width: clamp(140px, 20vw, 210px);
+    height: clamp(140px, 20vw, 210px);
+  }
+  .ent-paw-dot--left  { left:  10%; bottom: 18%; right: auto; }
+  .ent-paw-dot--right { right: 10%; bottom: 18%; left:  auto; }
+}
+
+/* ---- Mobile: stack the two sides vertically, cat (Oyen) on top, capy
+   (Techybara) below. Each row is full-width with a centred mascot +
+   centred paw dot, so the layout reads cleanly when the screen is too
+   narrow for the side-by-side composition. */
+@media (max-width: 767px) {
+  .ent-mascot-reveal {
+    min-height: 0;
+    padding-bottom: clamp(56px, 9vw, 88px);
+  }
+  .ent-mascot-stage {
+    min-height: 0;
+    margin-top: clamp(16px, 4vw, 28px);
+    display: flex;
+    flex-direction: column;
+    gap: clamp(12px, 3vw, 28px);
+    /* No clip on mobile — sides are stacked, no centre seam to enforce. */
+    clip-path: none;
+  }
+  .ent-mascot-side {
+    position: relative;
+    width: 100%;
+    height: clamp(300px, 64vw, 400px);
+    top: auto;
+    bottom: auto;
+    left: auto;
+    right: auto;
+    clip-path: none;
+  }
+
+  /* Centre the mascot in its row. Width is captured in a custom property
+     so the negative margin (the centring trick) can reference the same
+     clamp without GSAP-affecting transform tricks. */
+  .ent-mascot {
+    --mascot-w: clamp(190px, 46vw, 280px);
+    top: auto;
+    bottom: 0;
+    left: 50%;
+    right: auto;
+    margin-left: calc(var(--mascot-w) / -2);
+    width: var(--mascot-w);
+    height: clamp(280px, 68vw, 400px);
+  }
+  .ent-mascot--oyen { --base-tilt: -10deg; right: auto; }
+  .ent-mascot--capy { --base-tilt:  10deg; left:  50%; right: auto; }
+
+  /* Centred paw dot, sized down for the stacked mascot. */
+  .ent-paw-dot {
+    --dot-w: clamp(120px, 30vw, 200px);
+    width: var(--dot-w);
+    height: var(--dot-w);
+  }
+  .ent-paw-dot__inner,
+  .ent-paw-dot__ring {
+    width: clamp(100px, 26vw, 170px);
+    height: clamp(100px, 26vw, 170px);
+  }
+  .ent-paw-dot--left,
+  .ent-paw-dot--right {
+    left: 50%;
+    right: auto;
+    bottom: 14%;
+    margin-left: calc(var(--dot-w) / -2);
+  }
+
+  /* Cards into normal flow. Flex `order` interleaves them between their
+     matching mascot row, so the stack reads cat → focus card → capy →
+     how card instead of both mascots first then both cards. Narrower
+     max-width than the prior 460px so the cards sit comfortably inside
+     the screen — wide content cards at full container width felt too
+     tight against the section edges on tablets/phones. */
+  .ent-mascot-card,
+  .ent-mascot-card--focus,
+  .ent-mascot-card--how {
+    position: relative;
+    left: auto;
+    right: auto;
+    bottom: auto;
+    width: calc(100% - 32px);
+    max-width: 380px;
+    margin: 18px auto 0;
+  }
+  .ent-mascot-side--left   { order: 1; }
+  .ent-mascot-card--focus  { order: 2; }
+  .ent-mascot-side--right  { order: 3; }
+  .ent-mascot-card--how    { order: 4; }
+}
+
+/* ---- Reduced motion: drop bob + spring; static tilt + plain fade ---- */
+@media (prefers-reduced-motion: reduce) {
+  .ent-mascot--oyen,
+  .ent-mascot--capy { animation: none; }
+  /* Re-apply the static base tilt so the rotation still holds when the
+     bob keyframe is suppressed (positioning lives in top/left/right). */
+  .ent-mascot { transform: rotate(var(--base-tilt)); }
+}
+
+/* ============================================================
+   Hide enterprise nav/footer styling overrides written for the
+   old re-skin attempt — let the existing site.css [data-theme]
+   nav rules continue to work.
+   ============================================================ */

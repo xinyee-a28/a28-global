@@ -9,3 +9,6 @@ desktop.ini
 *~
 .idea/
 .vscode/
+
+# Image source PNGs — not served
+assets/img/**/_png_src/
